@@ -1,6 +1,6 @@
 # Advanced OOP - ASP.NET Core REST API Course Topics
 
-1. **Introduction and Setup**
+1. **First API**
    - Install .NET SDK and create a basic Web API project using the .NET CLI.
    - Overview of the project structure
 
