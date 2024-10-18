@@ -48,4 +48,12 @@ JSON is a lightweight data interchange format that is easy for humans to read an
 Despite its name, it is not directly tied to JavaScript and is supported by a variety of programming languages.
 It is commonly used in APIs to send and receive data because it provides a simple and structured way to represent complex data objects.
 
+Remember .gitignore
+
+```
+bin/
+obj/
+.vscode/
+```
+
 In the coding exercise today, you will use the dotnet CLI to create an API.
