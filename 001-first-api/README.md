@@ -26,17 +26,11 @@ Now let's run this command. It generates a new Web API project with a predefined
 
 Let's take a look at the folders and files generated for us:
 
-- Controllers/: This folder contains controller classes that handle incoming HTTP requests and send responses back to the client. By default, you'll find a file named WeatherForecastController.cs here, which we can modify to create our own API endpoints.
-
-- Program.cs: This file contains the entry point for our application. It sets up the web server and configures the application.
-
-- Startup.cs: This file is used to configure services and the app's request handling pipeline. It defines how the application behaves and interacts with incoming requests.
-
-- appsettings.json: This file is used to store configuration settings. You can define database connection strings and other app-specific settings here.
-
-- WeatherForecast.cs: This is a model class that represents the data structure for weather forecast data. It includes properties like Date, TemperatureC, Summary, and TemperatureF.
-
-- MyFirstApi.csproj: This is the project file that contains information about the project, including dependencies and build options.
+- /obj: This folder contains intermediate files generated during the build process.
+- /Properties: This folder contains project-specific settings and properties. 
+- appsettings.json: This is the main configuration file for the application. It can store various settings in JSON format, such as database connection strings, logging configurations, and any other application-specific settings.
+- MyFirstApi.csproj: This is the project file for your web API application. It contains metadata about the project, such as the project’s name, target framework, dependencies, and build settings. It is essential for the .NET build system.
+- Program.cs: This is the main entry point for your application. It contains the Main method, which is where the application starts running. In a typical ASP.NET Core application, this file also configures the web host, sets up services, and configures the application pipeline.
 
 Now let's cd, or change directoreis, into the `MyFirstApi` directory and run `dotnet run`
 
