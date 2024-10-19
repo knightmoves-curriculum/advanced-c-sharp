@@ -69,3 +69,16 @@ obj/
 - Files ending with .secrets.json typically store sensitive information, such as API keys, database connection strings, or other credentials required by the application. Sensitive information like credentials should never be committed to version control for security reasons.
 
 In the coding exercise today, you will use the dotnet CLI to create an API. 
+
+
+## Main Points
+1. API = Application Programming Interface
+1. APIs often return content in JSON format
+1. JSON = JavaScript Object Notation
+1. In order to prevent files and folders from being committed into git you should add them to the .gitignore file
+
+## Suggested Coding Exercise
+- Just have them use `dotnet new webapi -n MyFirstApi` to create their own app.
+- You could either
+  - verify a few file names at the root of the project
+  - or you could actually start the app in an acceptance test and hit the started app
