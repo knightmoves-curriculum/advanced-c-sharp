@@ -48,12 +48,24 @@ JSON is a lightweight data interchange format that is easy for humans to read an
 Despite its name, it is not directly tied to JavaScript and is supported by a variety of programming languages.
 It is commonly used in APIs to send and receive data because it provides a simple and structured way to represent complex data objects.
 
-Remember .gitignore
+In order to stop your API hold the control button on your keyboard while you press the `C` button at the same time.
+
+Before you commit your code remember to add a .gitignore file to your project in order to prevent Git from commiting files that don't need to be or shouldn't be pushed to GitHub.
+A few examples are 
+- compiled computer code,
+- configured libraries that can be downloaded each time,
+- local configuration files
+- and local secrets and properties that should not be shared.
 
 ```
 bin/
 obj/
 .vscode/
+*.secrets.json
 ```
+- The bin/ folder contains the compiled output of your .NET project, including the executable (.exe) or library (.dll) files, and any other binaries generated during the build process. The files in this directory are generated automatically by the build process, so they don't need to be tracked in version control.
+- The obj/ folder contains intermediate files that are generated during the build process. This includes compiled resources, temporary files, and metadata used to assist the build process, like .pdb files for debugging and .dll files used during compilation. Like bin/, the contents of the obj/ folder are generated automatically and can be recreated when building the project.
+- The .vscode/ folder is used by Visual Studio Code to store user-specific and workspace-specific configuration files, such as custom settings, extensions, debugging configurations, and launch configurations for the project. These settings are specific to your local development environment and may vary significantly between developers.
+- Files ending with .secrets.json typically store sensitive information, such as API keys, database connection strings, or other credentials required by the application. Sensitive information like credentials should never be committed to version control for security reasons.
 
-In the coding exercise today, you will use the dotnet CLI to create an API.
+In the coding exercise today, you will use the dotnet CLI to create an API. 
