@@ -8,3 +8,53 @@ In this lesson we will introduce a second HTTP Method called POST.  A POST reque
 When you make a POST request, you're providing information about a weather forecast which the server processes and stores as a new entry. 
 Unlike a GET request, which only retrieves data, a POST request specifically adds new weather forecast information to the application server.
 
+Let's add a new POST endpoint to our controller.
+
+``` cs
+using Microsoft.AspNetCore.Mvc;
+
+namespace MyFirstApi.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController: ControllerBase
+    {
+        private List<WeatherForecast> forecast = new List<WeatherForecast>();
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            return forecast;
+        }
+
+        [HttpPost]
+        public WeatherForecast Post([FromBody] WeatherForecast weatherForecast)
+        {
+            forecast.Add(weatherForecast);
+            return weatherForecast;
+        }
+    }
+}
+```
+
+While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use as tool called cURL.
+`cURL` stands for "Client URL," and it is a command-line tool used to transfer data to and from an application server using various protocols, such as HTTP, HTTPS, FTP, and more. 
+It allows users to easily make API requests by customizing request methods, headers, and data payloads.
+
+```
+curl -X GET http://localhost:5227/weatherforecast
+
+curl -X POST http://localhost:5227/weatherforecast \
+-H "Content-Type: application/json" \
+-d '{"Date": "2024-10-24", "TemperatureC": 10, "Summary": "Burr" }'
+
+curl http://localhost:5227/weatherforecast
+```
+
+The post did not get saved.  In ASP.NET Core, the controller class is instantiated, or created as a new instance, for each HTTP request by default. 
+This means that the forecast list, being an instance variable of the controller, is recreated as an empty list each time the controller is instantiated for a new request. 
+Therefore, the list doesn't persist between requests.
+
+In order to solve this, for now, we can simply make the forcast list static.  As you may recall from the last course, a static class-level variable in C# is a variable that is shared across 
+all instances of the class, meaning it retains its value even when no objects of the class are created, unlike the instance-level forecast variable that kept loosing our new forecast.  Static class-level variables are unique to each object and retain values while the application is running.
+
