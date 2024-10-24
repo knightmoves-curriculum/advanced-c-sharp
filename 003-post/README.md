@@ -55,6 +55,33 @@ The post did not get saved.  In ASP.NET Core, the controller class is instantiat
 This means that the forecast list, being an instance variable of the controller, is recreated as an empty list each time the controller is instantiated for a new request. 
 Therefore, the list doesn't persist between requests.
 
-In order to solve this, for now, we can simply make the forcast list static.  As you may recall from the last course, a static class-level variable in C# is a variable that is shared across 
+In order to solve this, for now, we can simply make the forcast list `static`.  As you may recall from the last course, a static class-level variable in C# is a variable that is shared across 
 all instances of the class, meaning it retains its value even when no objects of the class are created, unlike the instance-level forecast variable that kept loosing our new forecast.  Static class-level variables are unique to each object and retain values while the application is running.
+
+
+```
+curl -X GET http://localhost:5227/weatherforecast
+
+curl -X POST http://localhost:5227/weatherforecast \
+-H "Content-Type: application/json" \
+-d '{"Date": "2024-10-24", "TemperatureC": 10, "Summary": "Burr" }'
+
+curl http://localhost:5227/weatherforecast
+```
+
+As the list of forecasts grows it will become harder and harder to read.  To make these calls to our API easier to organize, send and read let's use a popular tool called Postman.
+Postman is a versatile tool designed for sending and receiving HTTP requests to application servers, making it easier to test and interact with APIs. 
+It provides a user-friendly interface for creating various types of requests, such as GET and POST, and allows users to view responses in data formats like JSON. 
+
+Let's install the Postman plugin.  In order to get started with Postman you will need to create a free account.
+
+Within the `WeatherForecast` Postman collection add the variable `baseUrl` and populate it with your unique url within codespaces.
+
+
+In the coding exercise, you will create a POST endpoint.
+
+## Main Points
+
+## Suggested Coding Exercise
+
 
