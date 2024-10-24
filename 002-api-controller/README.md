@@ -158,3 +158,15 @@ public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 }
 ```
 
+## Main Points
+1. ASP.NET is a web development framework created by Microsoft that allows developers to build dynamic websites and APIs.
+2. `[ApiController]` This attribute indicates that the class is an API controller. 
+3. `[Route("[controller]")]` attribute the placeholder [controller] will be replaced by the name of the controller, minus the "Controller" suffix.
+4. `[HttpGet]` This attribute indicates that the following method will respond to HTTP GET requests.
+
+## Suggested Coding Exercise
+- Just have them do the same refactoring to a controller
+- You could either
+  - verify that the controller exists with the correct attributes and content
+  - or you could actually start the app in an acceptance test and hit the started app but you would need to verify that the Program.cs does not still have the same content in order to prove the controller is being used.
+
