@@ -1,4 +1,4 @@
-In today's lesson we will add a weather forecast.  Up until now we've listed randomly generated weather forecasts through the HTTP Get Method.
+In today's lesson we'll add a weather forecast.  Up until now we've listed randomly generated weather forecasts through the HTTP Get Method.
 HTTP, or Hypertext Transfer Protocol, is a way for web browsers and servers to talk to each other, allowing you to request and view websites and other online content.
 HTTP has several ways to interact with a web applicaiton.  One of these ways is through a GET request.  A GET request in HTTP is used to ask an application server for data without making any changes to it. 
 When you make a GET request, like the one you've seen with the WeatherForecast, you're simply asking the server to send back information in a format like JSON. 
