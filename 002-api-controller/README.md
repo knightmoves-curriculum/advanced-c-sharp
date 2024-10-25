@@ -170,3 +170,6 @@ public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
   - verify that the controller exists with the correct attributes and content
   - or you could actually start the app in an acceptance test and hit the started app but you would need to verify that the Program.cs does not still have the same content in order to prove the controller is being used.
 
+## Building toward CSTA Standards:
+- Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
