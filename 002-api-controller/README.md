@@ -175,6 +175,4 @@ public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 - Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
 
 ## Resources
-- https://en.wikipedia.org/wiki/REST
-- https://en.wikipedia.org/wiki/HTTP
-- https://en.wikipedia.org/wiki/HTTP#Request_methods
+- https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-8.0
