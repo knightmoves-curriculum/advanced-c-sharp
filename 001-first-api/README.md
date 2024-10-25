@@ -78,7 +78,5 @@ In the coding exercise today, you will use the dotnet CLI to create an API.
   - or you could actually start the app in an acceptance test and hit the started app
 
  ## Building toward CSTA Standards:
- - Create computational models that represent the relationships among different elements of data collected from a phenomenon or process. (3A-DA-12) https://www.csteachers.org/page/standards
- - Explain how the characteristics of the Internet influence the systems built on it. (3A-NI-07) https://www.csteachers.org/page/standards
- - Describe the issues that impact network functionality (e.g., bandwidth, load, delay, topology). (3B-NI-03) https://www.csteachers.org/page/standards
- - Construct solutions to problems using student-created components, such as procedures, modules, and/or objects. (3B-AP-14) https://www.csteachers.org/page/standards
+ - Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
+ - Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
