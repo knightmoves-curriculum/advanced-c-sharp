@@ -11,9 +11,6 @@
 1. **Creating a POST Endpoint**
    - Adding functionality to handle POST requests and create new resources.
 
-1. **Handling Query Parameters in API Requests**
-   - Implementing dynamic filtering or searching using query parameters.
-
 1. **Working with Route Parameters**
    - Using route parameters for fetching resources dynamically based on URL values.
 
@@ -50,6 +47,9 @@
 
 1. **LINQ Aggregation and Reduction Operations**
    - Use LINQ methods like `Aggregate`, `Sum`, `Count`, and `Average` to perform aggregation and reduction on collections.
+
+1. **Handling Query Parameters in API Requests**
+   - Implementing dynamic filtering or searching using query parameters.
 
 1. **Model Validation with Data Annotations**
     - Using data annotations to validate input models and ensure data integrity.
