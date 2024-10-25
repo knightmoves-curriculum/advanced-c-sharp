@@ -55,8 +55,7 @@ The post did not get saved.  In ASP.NET Core, the controller class is instantiat
 This means that the forecast list, being an instance variable of the controller, is recreated as an empty list each time the controller is instantiated for a new request. 
 Therefore, the list doesn't persist between requests.
 
-In order to solve this, for now, we can simply make the forcast list `static`.  As you may recall from the last course, a static class-level variable in C# is a variable that is shared across 
-all instances of the class, meaning it retains its value even when no objects of the class are created, unlike the instance-level forecast variable that kept loosing our new forecast.  Static class-level variables are unique to each object and retain values while the application is running.
+In order to solve this, for now, we can simply make the forcast list `static`.  As you may recall from the last course, a static class-level variable in C# is a variable that is shared across all instances of the class, meaning it retains its value even when no objects of the class are created, unlike the instance-level forecast variable that kept loosing our new forecast.  Static class-level variables are unique to each object and retain values while the application is running.
 
 
 ```
@@ -81,9 +80,15 @@ Within the `WeatherForecast` Postman collection add the variable `baseUrl` and p
 In the coding exercise, you will create a POST endpoint.
 
 ## Main Points
+- HTTP = Hypertext Transfer Protocol
+- A GET request in HTTP is used to ask an application server for data without making any changes to it.
+- A POST request in HTTP is used to send data to a server to create a new resource
+- In ASP.NET Core, the controller class is instantiated, or created as a new instance, for each HTTP request by default.
+- a static variable in C# is a variable that is shared across all instances of the class
 
 ## Suggested Coding Exercise
-
+- This may be the right time to start having them build their own API maybe a person API that can list people and add people.
+- I think it would be best to start testing their API with TestServer and WebClient https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0
 
 ## Building toward CSTA Standards:
 - Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
