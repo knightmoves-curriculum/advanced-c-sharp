@@ -37,13 +37,7 @@ namespace MyFirstApi.Controllers
 }
 ```
 
-While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use as tool called Postman.
-Postman is a versatile tool designed for sending and receiving HTTP requests to application servers, making it easier to test and interact with APIs. 
-It provides a user-friendly interface for creating various types of requests, such as GET and POST, and allows users to view responses in data formats like JSON.
-
-Let's install the Postman plugin.  In order to get started with Postman you will need to create a free account.
-
-Within the `WeatherForecast` Postman collection add the variable `baseUrl` and populate it with your unique url within codespaces.
+While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use a plugin called Thunder Client.
 
 - Run the post
 
