@@ -11,9 +11,6 @@
 1. **Creating a POST Endpoint**
    - Adding functionality to handle POST requests and create new resources.
 
-1. **HTTP Status Codes and Customizing Responses**
-   - Customizing HTTP status codes to reflect different outcomes, like success and error states.
-
 1. **Handling Query Parameters in API Requests**
    - Implementing dynamic filtering or searching using query parameters.
 
@@ -25,6 +22,9 @@
      
 1. **Implementing a DELETE Endpoint**
    - Removing resources with the DELETE method and handling responses.
+
+1. **HTTP Status Codes and Customizing Responses**
+   - Customizing HTTP status codes to reflect different outcomes, like success and error states.
 
 1. **Implementing a Service Layer Using Dependency Injection**
     - Refactoring business logic into services and injecting them into controllers.
