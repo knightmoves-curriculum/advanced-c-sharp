@@ -80,3 +80,6 @@ In the coding exercise today, you will use the dotnet CLI to create an API.
  ## Building toward CSTA Standards:
  - Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
  - Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
+
+## Resources
+- https://en.wikipedia.org/wiki/API
