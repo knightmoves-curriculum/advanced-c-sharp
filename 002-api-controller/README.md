@@ -173,3 +173,8 @@ public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 ## Building toward CSTA Standards:
 - Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
 - Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
+
+## Resources
+- https://en.wikipedia.org/wiki/REST
+- https://en.wikipedia.org/wiki/HTTP
+- https://en.wikipedia.org/wiki/HTTP#Request_methods
