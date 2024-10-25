@@ -39,6 +39,14 @@ namespace MyFirstApi.Controllers
 
 While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use a plugin called Thunder Client.
 
+```
+{
+    "Date": "2024-10-24",
+    "TemperatureC": 10,
+    "Summary": "Burr"
+}
+```
+
 - Run the post
 
 The post did not get saved.  In ASP.NET Core, the controller class is instantiated, or created as a new instance, for each HTTP request by default. 
