@@ -53,6 +53,9 @@ In the coding exercise, you will create an endpoint with a route template.
 ## Building toward CSTA Standards:
 - Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
 - Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
+- Translate between different bit representations of real-world phenomena, such as characters, numbers, and images (3A-DA-09) https://www.csteachers.org/page/standards
+- Use lists to simplify solutions, generalizing computational problems instead of repeatedly using simple variables (3A-AP-14) https://www.csteachers.org/page/standards
+- Compare and contrast fundamental data structures and their uses (3B-AP-12) https://www.csteachers.org/page/standards
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-8.0#route-templates
