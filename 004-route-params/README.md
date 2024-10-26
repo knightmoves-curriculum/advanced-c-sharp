@@ -23,6 +23,42 @@ If your getting tired of restarting your application server to pick up new chang
 
 This picks up changes and hot deploys your changes.
 
+``` cs
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace MyFirstApi.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController: ControllerBase
+    {
+        private static List<WeatherForecast> forecast = new List<WeatherForecast>();
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            return forecast;
+        }
+
+        [HttpGet("{category}/{id}")]
+        public WeatherForecast FindById(int sids, [FromRoute(Name= "category")] string thing, int identifier)
+        {
+            Console.WriteLine("something " + thing);
+            var weatherForecast = forecast[sids];
+            return weatherForecast;
+        }
+
+        [HttpPost]
+        public WeatherForecast Post([FromBody] WeatherForecast weatherForecast)
+        {
+            forecast.Add(weatherForecast);
+            return weatherForecast;
+        }
+    }
+}
+```
+
 In the coding exercise, you will create an endpoint with a route template.
 
 ## Main Points
