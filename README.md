@@ -7,24 +7,21 @@
 1. **Creating a GET Endpoint**
    - Adding and customizing a basic GET endpoint.
    - Understanding routing conventions and customizing routes for API endpoints.
-
+  
 1. **Creating a POST Endpoint**
    - Adding functionality to handle POST requests and create new resources.
 
+1. **Working with Route Parameters**
+   - Using route parameters for fetching resources dynamically based on URL values.
+
 1. **Implementing a PUT Endpoint**
    - Handling updates to existing resources using the PUT method.
-
+     
 1. **Implementing a DELETE Endpoint**
    - Removing resources with the DELETE method and handling responses.
 
 1. **HTTP Status Codes and Customizing Responses**
    - Customizing HTTP status codes to reflect different outcomes, like success and error states.
-
-1. **Handling Query Parameters in API Requests**
-   - Implementing dynamic filtering or searching using query parameters.
-
-1. **Working with Route Parameters**
-   - Using route parameters for fetching resources dynamically based on URL values.
 
 1. **Implementing a Service Layer Using Dependency Injection**
     - Refactoring business logic into services and injecting them into controllers.
@@ -50,6 +47,9 @@
 
 1. **LINQ Aggregation and Reduction Operations**
    - Use LINQ methods like `Aggregate`, `Sum`, `Count`, and `Average` to perform aggregation and reduction on collections.
+
+1. **Handling Query Parameters in API Requests**
+   - Implementing dynamic filtering or searching using query parameters.
 
 1. **Model Validation with Data Annotations**
     - Using data annotations to validate input models and ensure data integrity.
