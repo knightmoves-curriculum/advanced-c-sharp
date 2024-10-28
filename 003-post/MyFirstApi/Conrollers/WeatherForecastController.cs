@@ -20,5 +20,12 @@ namespace MyFirstApi.Controllers
             forecast.Add(weatherForecast);
             return weatherForecast;
         }
+
+        [HttpGet("{category}/{id}")] 
+        public WeatherForecast FindById(string category, int id)
+        {
+            Console.WriteLine("category: " + category);
+            return forecast[id];
+        }
     }
 }
