@@ -62,3 +62,5 @@ In the coding exercise, you will create a PUT endpoint.
 
 ## Resources
 - https://en.wikipedia.org/wiki/REST
+- https://en.wikipedia.org/wiki/HTTP
+- https://en.wikipedia.org/wiki/HTTP#Request_methods
