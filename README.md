@@ -20,8 +20,13 @@
 1. **Implementing a DELETE Endpoint**
    - Removing resources with the DELETE method and handling responses.
 
-1. **HTTP Status Codes and Customizing Responses**
-   - Customizing HTTP status codes to reflect different outcomes, like success and error states.
+1. **2XX Responses
+
+1. **4XX Responses
+
+1. **5XX Responses
+
+1. **Custom Responses
 
 1. **Implementing a Service Layer Using Dependency Injection**
     - Refactoring business logic into services and injecting them into controllers.
