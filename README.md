@@ -33,6 +33,7 @@
      
 1. **Dependency Inversion Principle (DIP)**
     - Refactoring business logic into services and injecting them into controllers.
+    - Factory pattern
     - Exploring how DI works in ASP.NET Core and setting up services.
     - Inject using concrete classes
 
