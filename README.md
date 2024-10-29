@@ -31,9 +31,13 @@
 1. **Implementing a Service Layer Using Dependency Injection**
     - Refactoring business logic into services and injecting them into controllers.
     - Exploring how DI works in ASP.NET Core and setting up services.
+    - Inject using concrete classes
 
 1. **Service Lifetimes: Scoped, Transient, and Singleton**
     - Understanding different service lifetimes and when to use each one.
+
+1. ** Interface Segregation Principle
+   - Inject using interfaces
 
 1. **Working with Task-Based Asynchronous Patterns (TAP)**
     - Deep dive into TAP and its use in improving concurrency in APIs.
