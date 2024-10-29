@@ -20,15 +20,18 @@
 1. **Implementing a DELETE Endpoint**
    - Removing resources with the DELETE method and handling responses.
 
-1. **2XX Responses
+1. **2XX Responses**
 
-1. **4XX Responses
+1. **4XX Responses**
 
-1. **5XX Responses
+1. **5XX Responses**
 
-1. **Custom Responses
+1. **Custom Responses**
 
-1. **Implementing a Service Layer Using Dependency Injection**
+1. **Single Responsibility Principle (SRP)**
+   - Extract new store class and new it up in the controller
+     
+1. **Dependency Inversion Principle (DIP)**
     - Refactoring business logic into services and injecting them into controllers.
     - Exploring how DI works in ASP.NET Core and setting up services.
     - Inject using concrete classes
@@ -36,7 +39,7 @@
 1. **Service Lifetimes: Scoped, Transient, and Singleton**
     - Understanding different service lifetimes and when to use each one.
 
-1. **Interface Segregation Principle
+1. **Interface Segregation Principle (ISP)**
    - Inject using interfaces
 
 1. **Working with Task-Based Asynchronous Patterns (TAP)**
