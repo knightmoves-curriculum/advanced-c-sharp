@@ -36,7 +36,7 @@
 1. **Service Lifetimes: Scoped, Transient, and Singleton**
     - Understanding different service lifetimes and when to use each one.
 
-1. ** Interface Segregation Principle
+1. **Interface Segregation Principle
    - Inject using interfaces
 
 1. **Working with Task-Based Asynchronous Patterns (TAP)**
