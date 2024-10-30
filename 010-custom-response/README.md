@@ -93,5 +93,10 @@ In the coding exercise, you will use a custom Http response.
 Add a custom response to the api.
 
 ## Building toward CSTA Standards:
+- Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects (3A-CS-01) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
 
 ## Resources
+- https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+- https://en.wikipedia.org/wiki/Request%E2%80%93response
+- 
