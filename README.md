@@ -26,6 +26,7 @@
     - Using data annotations to validate input models and ensure data integrity.
 
 1. **4XX Responses**
+     - 400 Bad Request when model fails validation
 
 1. **5XX Responses**
 
