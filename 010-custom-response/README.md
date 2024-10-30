@@ -1,5 +1,5 @@
 In today's lesson we'll ...
-
+``` cs
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -77,6 +77,7 @@ namespace MyFirstApi.Controllers
         }
     }
 }
+```
 
 In the coding exercise, you will ...
 
