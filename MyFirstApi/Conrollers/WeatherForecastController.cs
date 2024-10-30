@@ -22,24 +22,36 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpGet("{id}")] 
-        public WeatherForecast FindById(int id)
+        public IActionResult FindById(int id)
         {
-            return forecast[id];
+            if(id > (forecast.Count - 1))
+            {
+                return NotFound();
+            }
+            return Ok(forecast[id]);
         }
 
         [HttpPut("{id}")]
-        public WeatherForecast UpdateById([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
+        public IActionResult UpdateById([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
         {
+            if(id > (forecast.Count - 1))
+            {
+                return NotFound();
+            }
             forecast[id] = weatherForecast;
-            return weatherForecast;
+            return Ok(weatherForecast);
         }
 
         [HttpDelete("{id}")]
-        public WeatherForecast Remove(int id)
+        public IActionResult Remove(int id)
         {
+            if(id > (forecast.Count - 1))
+            {
+                return NotFound();
+            }
             var weatherForecast = forecast[id];
             forecast.Remove(weatherForecast);
-            return weatherForecast;
+            return Ok(weatherForecast);
         }
     }
 }
