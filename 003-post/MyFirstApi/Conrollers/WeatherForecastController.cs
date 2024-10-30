@@ -27,5 +27,20 @@ namespace MyFirstApi.Controllers
             Console.WriteLine("category: " + category);
             return forecast[id];
         }
+
+        [HttpPut("{id}")]
+        public WeatherForecast UpdateById([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
+        {
+            forecast[id] = weatherForecast;
+            return weatherForecast;
+        }
+
+        [HttpDelete("{id}")]
+        public WeatherForecast Remove(int id)
+        {
+            var weatherForecast = forecast[id];
+            forecast.Remove(weatherForecast);
+            return weatherForecast;
+        }
     }
 }
