@@ -22,6 +22,9 @@
 
 1. **2XX Responses**
 
+1. **Model Validation with Data Annotations**
+    - Using data annotations to validate input models and ensure data integrity.
+
 1. **4XX Responses**
 
 1. **5XX Responses**
@@ -63,9 +66,6 @@
 
 1. **Handling Query Parameters in API Requests**
    - Implementing dynamic filtering or searching using query parameters.
-
-1. **Model Validation with Data Annotations**
-    - Using data annotations to validate input models and ensure data integrity.
 
 1. **Advanced Validation Techniques**
     - Creating custom validation attributes and business rule validation.
