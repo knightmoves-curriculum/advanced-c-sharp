@@ -3,13 +3,12 @@ If our code encounteres an unexpected exception it will return a 500, Internal S
 
 ``` cs
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace MyFirstApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController: ControllerBase
+    public class WeatherForecastController : ControllerBase
     {
         private static List<WeatherForecast> forecast = new List<WeatherForecast>();
 
@@ -22,11 +21,14 @@ namespace MyFirstApi.Controllers
         [HttpGet("boom")]
         public IActionResult GetBoom()
         {
-            Response.Headers.Add("API-Version", "1.0");
+            Response.Headers.Append("API-Version", "1.0");
 
-            try{
+            try
+            {
                 throw new Exception("Boom!");
-            } catch (Exception ex){
+            }
+            catch (Exception ex)
+            {
                 return StatusCode(500, new
                 {
                     Status = 500,
@@ -40,7 +42,7 @@ namespace MyFirstApi.Controllers
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            if(id > (forecast.Count - 1))
+            if (id > (forecast.Count - 1))
             {
                 return NotFound();
             }
@@ -58,7 +60,7 @@ namespace MyFirstApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
         {
-            if(id > (forecast.Count - 1))
+            if (id > (forecast.Count - 1))
             {
                 return NotFound();
             }
@@ -69,7 +71,7 @@ namespace MyFirstApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if(id > (forecast.Count - 1))
+            if (id > (forecast.Count - 1))
             {
                 return NotFound();
             }
