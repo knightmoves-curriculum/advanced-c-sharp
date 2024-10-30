@@ -15,16 +15,15 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpPost]
-        public WeatherForecast CreateWeatherForecast([FromBody] WeatherForecast weatherForecast)
+        public IActionResult CreateWeatherForecast([FromBody] WeatherForecast weatherForecast)
         {
             forecast.Add(weatherForecast);
-            return weatherForecast;
+            return Created($"/weatherforecast/{forecast.Count - 1}", weatherForecast);
         }
 
-        [HttpGet("{category}/{id}")] 
-        public WeatherForecast FindById(string category, int id)
+        [HttpGet("{id}")] 
+        public WeatherForecast FindById(int id)
         {
-            Console.WriteLine("category: " + category);
             return forecast[id];
         }
 
