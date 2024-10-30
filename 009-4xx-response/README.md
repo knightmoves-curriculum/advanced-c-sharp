@@ -67,8 +67,10 @@ namespace MyFirstApi.Controllers
 In the coding exercise, you will use the NotFound response code method.
 
 ## Main Points
+- The HTTP Response Status Code 404 = Not Found
 
 ## Suggested Coding Exercise
+- Have them add the same check to their code.
 
 ## Building toward CSTA Standards:
 
