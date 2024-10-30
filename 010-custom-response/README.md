@@ -1,4 +1,6 @@
-In today's lesson we'll ...
+In today's lesson we'll gracefully look at how APIs deal with exceptions that are thrown inside code.  We will also look at a way to customize our responses.  
+If our code encounteres an unexpected exception it will return a 500, Internal Server Error response status code.
+
 ``` cs
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -78,8 +80,10 @@ namespace MyFirstApi.Controllers
     }
 }
 ```
+Allowing a raw exception to be displayed to the client is very dangerous.  Form a single error stack anyone can learn alot about your application and find ways to exploit it's vulnerabilities.
+Instead we should catch the error and return a 500 with a custom response.  
 
-In the coding exercise, you will ...
+In the coding exercise, you will use a custom Http response.
 
 ## Main Points
 
