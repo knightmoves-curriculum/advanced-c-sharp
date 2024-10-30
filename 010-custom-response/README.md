@@ -86,9 +86,11 @@ Instead we should catch the error and return a 500 with a custom response.
 In the coding exercise, you will use a custom Http response.
 
 ## Main Points
-- 
+- The HTTP Response Status Code 500 = Internal Server Error
+- Allowing a raw exception to be displayed to the client is very dangerous.
 
 ## Suggested Coding Exercise
+Add a custom response to the api.
 
 ## Building toward CSTA Standards:
 
