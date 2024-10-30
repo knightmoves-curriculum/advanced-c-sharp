@@ -1,4 +1,6 @@
-In today's lesson we'll ...
+In today's lesson we'll gracefully handle missing id lookups.  Right now if you request an id that does not exist it will throw an ArgumentOutOfRangeException.
+
+Instead of letting our code blow up we need to add a check to see if a weater forecast is found.  If we don't find one then we will return a 404, Not Found HTTP response status code.
 
 ``` cs
 using Microsoft.AspNetCore.Mvc;
@@ -62,7 +64,7 @@ namespace MyFirstApi.Controllers
 }
 ```
 
-In the coding exercise, you will ...
+In the coding exercise, you will use the NotFound response code method.
 
 ## Main Points
 
