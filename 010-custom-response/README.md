@@ -86,6 +86,7 @@ Instead we should catch the error and return a 500 with a custom response.
 In the coding exercise, you will use a custom Http response.
 
 ## Main Points
+- 
 
 ## Suggested Coding Exercise
 
