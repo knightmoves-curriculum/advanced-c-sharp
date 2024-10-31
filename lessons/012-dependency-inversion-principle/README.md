@@ -1,4 +1,5 @@
-In today's lesson we'll ...
+In today's lesson we'll learn how to increase the separation between the controller and the repository using a combination of design patterns.
+Right now the Controller 
 
 
 
