@@ -101,4 +101,5 @@ Add a custom response to the api.
 ## Resources
 - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 - https://en.wikipedia.org/wiki/Request%E2%80%93response
-- 
+- https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.statuscode?view=aspnetcore-8.0
+- https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpresponse.headers?view=aspnetcore-8.0#microsoft-aspnetcore-http-httpresponse-headers
