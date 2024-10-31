@@ -138,12 +138,15 @@ namespace MyFirstApi.Controllers
 }
 ```
 
+By pulling out this concern we've encapsulated forecast management inside a separate class.  Encapsulation is the practice of bundling data with its related methods and restricting direct access to protect the object's internal state.
+
 In the coding exercise, you will apply the Single Responsibility Principle.
 
 ## Main Points
 - The Single Responsibility Principle states that a class should have only one reason to change
 - MVC = Model View Controller
-- 
+- Encapsulation is the practice of bundling data with its related methods and restricting direct access to protect the object's internal state.
+
 ## Suggested Coding Exercise
 Extract person storage to a repository class.
 
