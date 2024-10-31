@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyFirstApi.Models;
 
 namespace MyFirstApi.Controllers
 {
@@ -6,12 +7,12 @@ namespace MyFirstApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static List<WeatherForecast> forecast = new List<WeatherForecast>();
+        private static WeatherForecastRepository repository = new WeatherForecastRepository();
 
         [HttpGet]
         public IEnumerable<WeatherForecast> ListAllWeatherForecasts()
         {
-            return forecast;
+            return repository.FindAll();
         }
 
         [HttpGet("boom")]
@@ -36,40 +37,39 @@ namespace MyFirstApi.Controllers
         [HttpPost]
         public IActionResult CreateWeatherForecast([FromBody] WeatherForecast weatherForecast)
         {
-            forecast.Add(weatherForecast);
-            return Created($"/weatherforecast/{forecast.Count - 1}", weatherForecast);
+            repository.Save(weatherForecast);
+            return Created($"/weatherforecast/{repository.FindAll().Count - 1}", weatherForecast);
         }
 
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            if (id > (forecast.Count - 1))
+            if (id > (repository.FindAll().Count - 1))
             {
                 return NotFound();
             }
-            return Ok(forecast[id]);
+            return Ok(repository.FindById(id));
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateById([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
         {
-            if (id > (forecast.Count - 1))
+            if (id > (repository.FindAll().Count - 1))
             {
                 return NotFound();
             }
-            forecast[id] = weatherForecast;
+            repository.Update(id, weatherForecast);
             return Ok(weatherForecast);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {
-            if (id > (forecast.Count - 1))
+            if (id > (repository.FindAll().Count - 1))
             {
                 return NotFound();
             }
-            var weatherForecast = forecast[id];
-            forecast.Remove(weatherForecast);
+            WeatherForecast weatherForecast = repository.RemoveById(id);
             return Ok(weatherForecast);
         }
     }
