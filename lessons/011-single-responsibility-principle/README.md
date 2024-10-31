@@ -160,3 +160,4 @@ Extract person storage to a repository class.
 ## Resources
 - https://en.wikipedia.org/wiki/Single-responsibility_principle
 - https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+- https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)
