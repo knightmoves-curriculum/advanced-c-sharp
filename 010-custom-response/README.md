@@ -1,4 +1,4 @@
-In today's lesson we'll gracefully look at how APIs deal with exceptions that are thrown inside code.  We will also look at a way to customize our responses.  
+In today's lesson we'll look at how to handle exceptions gracefully when they are encountered inside an API.  We will also look at a way to customize our responses.  
 If our code encounteres an unexpected exception it will return a 500, Internal Server Error response status code.
 
 ``` cs
