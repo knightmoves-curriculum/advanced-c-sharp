@@ -148,3 +148,4 @@ In the coding exercise, you will apply the interface segregation principle.
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0#overview-of-dependency-injection
+- https://en.wikipedia.org/wiki/Interface_segregation_principle
