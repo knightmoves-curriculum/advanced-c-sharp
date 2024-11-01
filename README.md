@@ -49,6 +49,7 @@
 
 1. **Working with Task-Based Asynchronous Patterns (TAP)**
     - Deep dive into TAP and its use in improving concurrency in APIs.
+   - Introduce asynchronous programming using `async` and `await` to write non-blocking code.
 
 1. **Introduction to Entity Framework Core and SQLite Setup**
     - Setting up Entity Framework Core with SQLite as a lightweight local database.
@@ -144,9 +145,6 @@
 
 1. **Exception Handling with `try`, `catch`, and `finally`**
    - Review the basic concepts of exception handling and how to properly use `try`, `catch`, and `finally` blocks.
-
-1. **Async Programming with `async` and `await`**
-   - Introduce asynchronous programming using `async` and `await` to write non-blocking code.
 
 1. **Task and Task<T>**
    - Explore the `Task` and `Task<T>` types and demonstrate how to use them for asynchronous operations in C#.
