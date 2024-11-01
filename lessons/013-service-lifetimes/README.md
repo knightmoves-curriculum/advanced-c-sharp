@@ -13,6 +13,21 @@ app.MapControllers();
 
 app.Run();
 ```
+```cs
+        public WeatherForecastController(IRepository<int, WeatherForecast> repository)
+        {
+            Console.WriteLine("Construction WeatherForecastController...");
+            this.repository = repository;
+        }
+```
+
+```cs
+        public WeatherForecastRepository()
+        {
+            Console.WriteLine("Construction WeatherForecastRepository...");
+            forecast = new List<WeatherForecast>();
+        }
+```
 
 
 Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
@@ -32,6 +47,7 @@ In the coding exercise, you will use ASP.NET to inject a service.
 - Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
 - Transient lifetime services are created each time they're requested from the service container.
 - For web applications, a scoped lifetime indicates that services are created once per client request (connection).
+- singleton services must be stateless
 
 ## Suggested Coding Exercise
 - Cut over to use ASP.NET to inject the repository into the controller
