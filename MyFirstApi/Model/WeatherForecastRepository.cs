@@ -1,6 +1,6 @@
 namespace MyFirstApi.Models
 {
-    public class WeatherForecastRepository : IRepository<int, WeatherForecast>
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
     {
         private List<WeatherForecast> forecast;
 
@@ -8,6 +8,11 @@ namespace MyFirstApi.Models
         {
             Console.WriteLine("contructing WeatherForecastRepository...");
             forecast = new List<WeatherForecast>();
+        }
+
+        public int Count()
+        {
+            return forecast.Count;
         }
 
         public List<WeatherForecast> FindAll()

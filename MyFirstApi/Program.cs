@@ -2,7 +2,10 @@ using MyFirstApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IRepository<int, WeatherForecast>, WeatherForecastRepository>();
+builder.Services.AddSingleton<WeatherForecastRepository>();
+builder.Services.AddSingleton<IReadRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
+builder.Services.AddSingleton<IWriteRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
+
 
 builder.Services.AddControllers();
 
