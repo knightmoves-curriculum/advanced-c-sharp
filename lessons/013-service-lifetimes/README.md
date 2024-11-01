@@ -1,10 +1,6 @@
 In today's lesson we'll look at how ASP.NET Core supports dependency injection out of the box.  In the previous lesson we created our own factory and injected the repository into the controller.
 While that was helpful in understanding how dependency injection works, we don't have to do this by hand.  ASP.NET has a built-in dependency injection container. This dependency injection container, also known as the IoC Continer or an Inversion of Control container, manages the creation and injection of classes.  The Inversion of Control (IoC) principle is a design approach in which the control of object creation and dependency management is delegated from the object itself to an external entity, often a dependency injection container, like ASP.NET.  While this may seem difficult to understand you'll quickly see how much easier and cleaner it is to just let ASP.NET do this for you.
 
-Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
-Transient lifetime services are created each time they're requested from the service container.
-For web applications, a scoped lifetime indicates that services are created once per client request (connection).
-
 ``` cs
 using MyFirstApi.Models;
 
@@ -17,6 +13,13 @@ app.MapControllers();
 
 app.Run();
 ```
+
+
+Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
+
+Beyond Singleton ASP.NET also provides Transient and Scoped Lifetime scopes.
+Transient lifetime services are created each time they're requested from the service container.
+For web applications, a scoped lifetime indicates that services are created once per client request (connection).
 
 In a web application, singleton services must be stateless, meaning they don't store any information specific to a single user.  Since there is only one instance of a singleton within an application if it did store, for instance bank information, then one user could access another user's bank information.  This is why it's so important to understand that singleton services must be stateless.
 
