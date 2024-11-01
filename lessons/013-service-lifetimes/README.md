@@ -9,14 +9,10 @@ For web applications, a scoped lifetime indicates that services are created once
 using MyFirstApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddScoped<IRepository<int, WeatherForecast>, WeatherForecastRepository>();
-
-
 builder.Services.AddControllers();
 
 var app = builder.Build();
-
 app.MapControllers();
 
 app.Run();
