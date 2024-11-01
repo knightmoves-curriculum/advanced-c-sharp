@@ -6,6 +6,7 @@ namespace MyFirstApi.Models
 
         public WeatherForecastRepository()
         {
+            Console.WriteLine("contructing WeatherForecastRepository...");
             forecast = new List<WeatherForecast>();
         }
 

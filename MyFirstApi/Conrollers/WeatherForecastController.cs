@@ -11,6 +11,7 @@ namespace MyFirstApi.Controllers
 
         public WeatherForecastController(IRepository<int, WeatherForecast> weatherForecastRepository)
         {
+            Console.WriteLine("contructing WeatherForecastController...");
             repository = weatherForecastRepository;
         }
 
