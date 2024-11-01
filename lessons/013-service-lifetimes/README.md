@@ -5,7 +5,10 @@ Singleton lifetime ensures that a single instance of a service is created and sh
 Transient lifetime services are created each time they're requested from the service container.
 For web applications, a scoped lifetime indicates that services are created once per client request (connection).
 
-In the coding exercise, you will ...
+
+In a web application, singleton services must be stateless, meaning they don't store any information specific to a single user.  Since there is only one instance of a singleton within an application if it did store, for instance bank information, then one user could access another user's bank information.  This is why it's so important to understand that singleton services must be stateless.
+
+In the coding exercise, you will use ASP.NET to inject a service.
 
 ## Main Points
 - ASP.NET has a built-in dependency injection container.
