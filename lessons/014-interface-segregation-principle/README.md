@@ -135,10 +135,16 @@ app.Run();
 In the coding exercise, you will apply the interface segregation principle.
 
 ## Main Points
+- The Interface Segregation Principle states that an interface should only include methods that are relevant to the client using it, meaning no client should be forced to depend on methods it doesn't use.
 
 ## Suggested Coding Exercise
+- Split out an admin vs general purpos api.  (This will be helpful when we apply security in the future)
 
 ## Building toward CSTA Standards:
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects. (3A-AP-17) https://www.csteachers.org/page/standards
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects. (3B-AP-14) https://www.csteachers.org/page/standards
+- Compare levels of abstraction and interactions between application software, system software, and hardware layers. (3A-CS-02) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs. (3B-AP-16) https://www.csteachers.org/page/standards
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0#overview-of-dependency-injection
