@@ -14,10 +14,10 @@ In the coding exercise, you will ...
 - Cut over to use ASP.NET to inject the repository into the controller
 
 ## Building toward CSTA Standards:
-- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects. (3A-AP-17)
-- Construct solutions to problems using student-created components, such as procedures, modules and/or objects. (3B-AP-14)
-- Compare levels of abstraction and interactions between application software, system software, and hardware layers. (3A-CS-02)
-- Demonstrate code reuse by creating programming solutions using libraries and APIs. (3B-AP-16)
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects. (3A-AP-17) https://www.csteachers.org/page/standards
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects. (3B-AP-14) https://www.csteachers.org/page/standards
+- Compare levels of abstraction and interactions between application software, system software, and hardware layers. (3A-CS-02) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs. (3B-AP-16) https://www.csteachers.org/page/standards
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0#service-lifetimes
