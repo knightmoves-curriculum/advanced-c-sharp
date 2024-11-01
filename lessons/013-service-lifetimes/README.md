@@ -1,7 +1,9 @@
 In today's lesson we'll look at how ASP.NET Core supports dependency injection.  In the previous lesson we created our own factory and injected the repository into the controller.
 While that was helpful in understanding how dependency injection works, we don't have to do this by hand.  ASP.NET has a built-in dependency injection container. The DI container, also known as the IoC Continer or an Inversion of Control container, manages the creation and injection of classes.  The Inversion of Control (IoC) principle is a design approach in which the control of object creation and dependency management is delegated from the object itself to an external entity, often a DI container, like ASP.NET.  While this may seem difficult to understand you'll quickly see how much easier and cleaner it is to just let ASP.NET do this for you.
 
-
+Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
+Transient lifetime services are created each time they're requested from the service container.
+For web applications, a scoped lifetime indicates that services are created once per client request (connection).
 
 In the coding exercise, you will ...
 
@@ -9,6 +11,9 @@ In the coding exercise, you will ...
 - ASP.NET has a built-in dependency injection container.
 - Dependency Injections container is also known as an Inversion of Control container.
 - The Inversion of Control (IoC) principle is a design approach in which the control of object creation and dependency management is delegated from the object itself to an external entity, often a DI container, like ASP.NET.
+- Singleton lifetime ensures that a single instance of a service is created and shared across the entire application for all requests and users, lasting until the application is restarted.
+- Transient lifetime services are created each time they're requested from the service container.
+- For web applications, a scoped lifetime indicates that services are created once per client request (connection).
 
 ## Suggested Coding Exercise
 - Cut over to use ASP.NET to inject the repository into the controller
