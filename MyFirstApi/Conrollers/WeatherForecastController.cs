@@ -7,7 +7,12 @@ namespace MyFirstApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static WeatherForecastRepository repository = new WeatherForecastRepository();
+        private IRepository<int, WeatherForecast> repository;
+
+        public WeatherForecastController(IRepository<int, WeatherForecast> weatherForecastRepository)
+        {
+            repository = weatherForecastRepository;
+        }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> ListAllWeatherForecasts()
