@@ -59,15 +59,11 @@
 
 1. **CRUD Operations with Entity Framework Core**
     - Implementing Create, Read, Update, and Delete (CRUD) operations using EF Core.
-  
-1. **LINQ Introduction and Querying Collections**
-   - Demonstrate basic LINQ queries on collections, such as filtering, projecting, and ordering data.
-
-1. **LINQ Aggregation and Reduction Operations**
-   - Use LINQ methods like `Aggregate`, `Sum`, `Count`, and `Average` to perform aggregation and reduction on collections.
 
 1. **Handling Query Parameters in API Requests**
    - Implementing dynamic filtering or searching using query parameters.
+   - Demonstrate basic LINQ queries on collections, such as filtering, projecting, and ordering data.
+   - Use LINQ methods like `Aggregate`, `Sum`, `Count`, and `Average` to perform aggregation and reduction on collections.
 
 1. **Advanced Validation Techniques**
     - Creating custom validation attributes and business rule validation.
