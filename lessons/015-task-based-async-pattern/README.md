@@ -1,4 +1,4 @@
-In today's lesson we'll ...
+In today's lesson we'll look at how one API can call another API.  In order to achieve this we will need to use the Task-based Asynchronous Pattern which is also know as TAP.  This pattern is used in .NET to handle blocking opperations through asynchronous calls by using Task objects which improving application responsiveness.  Without TAP, 3rd party API call that take a long time to respond will block our code.  Instead of blocking our code TAP allows our API to request a 3rd party API asyncronously, allowing it to respond when it is ready without blocking our code.  
 
 
 ``` cs
@@ -58,7 +58,9 @@ namespace MyFirstApi.Controllers
     }
 }
 ```
-
+The `async` keyword is used mark a method as asynchronous and typically returns a Task.
+This asynchronous method can contain one or more `await` expressions. `await` enables the method to run a command without blocking the calling thread.
+Threads are lightweight unit of execution within a computer program that allows multiple tasks to run simultaneously.
 ``` cs
 
 using Microsoft.AspNetCore.Authorization.Infrastructure;
@@ -164,10 +166,13 @@ app.Run();
 
 ```
 
-In the coding exercise ...
+In the coding exercise you will apply the Task-based Asynchronous Pattern.
 
 ## Main Points
-- 
+- The Task-based Asynchronous Pattern is used in .NET to handle blocking opperations through asynchronous calls by using Task objects which improving application responsiveness.
+- The `async` keyword is used mark a method as asynchronous and typically returns a Task.
+- The `await` keyword enables the method to run a command without blocking the calling thread.
+- Threads are lightweight unit of execution within a computer program that allows multiple tasks to run simultaneously.
 
 ## Suggested Coding Exercise
 - Have students look up the city and state by zipcode through https://api.zippopotam.us/us/{zipCode}.
@@ -189,7 +194,15 @@ In the coding exercise ...
 }
 ```
 ## Building toward CSTA Standards:
-- 
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects. (3A-AP-17) https://www.csteachers.org/page/standards
+- Justify the selection of specific control structures when tradeoffs involve implementation, readability, and program performance, and explain the benefits and drawbacks of choices made. (3A-AP-15) https://www.csteachers.org/page/standards
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects. (3B-AP-14) https://www.csteachers.org/page/standards
+- Compare levels of abstraction and interactions between application software, system software, and hardware layers. (3A-CS-02) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs. (3B-AP-16) https://www.csteachers.org/page/standards
+- Use and adapt classic algorithms to solve computational problems. (3B-AP-10) https://www.csteachers.org/page/standards
+- Evaluate algorithms in terms of their efficiency, correctness, and clarity. (3B-AP-11) https://www.csteachers.org/page/standards
 
 ## Resources
-- 
+- https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/
+- https://en.wikipedia.org/wiki/Thread_(computing)
+- https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap
