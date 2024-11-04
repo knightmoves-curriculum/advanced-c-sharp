@@ -264,13 +264,13 @@ In the coding exercise you will use Entity Framework.
 - Cut over to use SQLite to store people.
 
 ## Building toward CSTA Standards:
-- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17)
-- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18)
-- Compare and contrast fundamental data structures and their uses (3B-AP-12)
-- Construct solutions to problems using student-created components, such as procedures, modules and/or objects (3B-AP-14)
-- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16)
-- Develop and use a series of test cases to verify that a program performs according to its design specifications (3B-AP-21)
-- Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality) (3B-AP-22)
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17) https://www.csteachers.org/page/standards
+- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18) https://www.csteachers.org/page/standards
+- Compare and contrast fundamental data structures and their uses (3B-AP-12) https://www.csteachers.org/page/standards
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects (3B-AP-14) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
+- Develop and use a series of test cases to verify that a program performs according to its design specifications (3B-AP-21) https://www.csteachers.org/page/standards
+- Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality) (3B-AP-22) https://www.csteachers.org/page/standards
 
 
 ## Resources
