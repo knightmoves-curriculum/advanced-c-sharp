@@ -1,4 +1,4 @@
-In today's lesson we'll ...
+In today's lesson we'll replace our static forecast list with a database.  Within ASP.NET it's best to use Entity Framework to talk to the database.  Entity Framework (EF) is an open-source Object-Relational Mapper specifically designed for .NET. An Object-Relational Mapper, or ORM, is a software technique that simplifies the interaction between object-oriented programming languages and relational databases by mapping database tables to objects in code. Entity Framework, also called EF, enabling developers to interact with databases using .NET objects instead of raw SQL queries. EF enhances productivity and maintainability by offering various development approaches, integrating with LINQ for intuitive querying, and providing features like change tracking, migrations, and support for relationships, making it easier to manage and update data models in applications.
 
 ```
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
@@ -255,6 +255,8 @@ dotnet ef database update
 In the coding exercise you will use Entity Framework.
 
 ## Main Points
+- Entity Framework (EF) is an open-source Object-Relational Mapper specifically designed for .NET
+- An Object-Relational Mapper, or ORM, is a software technique that simplifies the interaction between object-oriented programming languages and relational databases by mapping database tables to objects in code.
 - `dotnet add package` Adds or updates a package reference in a project file.
 - `dotnet tool install` Installs the specified .NET tool on your machine.
 - `dotnet ef migrations add InitialCreate` creates a directory called `Migrations` in the root of your project, and generate some migration files.
@@ -274,6 +276,8 @@ In the coding exercise you will use Entity Framework.
 
 
 ## Resources
+- https://learn.microsoft.com/en-us/ef/
+- https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping
 - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-package
 - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install
 - https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli#create-your-first-migration
