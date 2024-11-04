@@ -176,7 +176,7 @@ In the coding exercise you will apply the Task-based Asynchronous Pattern.
 - Threads are lightweight unit of execution within a computer program that allows multiple tasks to run simultaneously.
 
 ## Suggested Coding Exercise
-- Have students look up the city and state by zipcode through https://api.zippopotam.us/us/{zipCode}.
+- Have students look up the city and state by zipcode through https://api.zippopotam.us/us/{zipCode}.  There are other APIs but this one is free and does not require an API Key.
 
 ```
 {
