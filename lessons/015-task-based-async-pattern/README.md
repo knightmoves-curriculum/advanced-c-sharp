@@ -136,6 +136,7 @@ public class WeatherForecast
     public WeatherForecast(DateTime date, double temperature, string? summary)
     {
         Date = DateOnly.FromDateTime(date);
+        TemperatureF = (int) temperature;
         TemperatureC = (int)((temperature - 32) * 5.0 / 9.0); ;
         Summary = summary;
     }
