@@ -4,6 +4,7 @@ In today's lesson we'll ...
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
+- `dotnet add package` Adds or updates a package reference in a project file.
 
 /Models/WeatherForecastDbContext.cs
 ``` cs
@@ -247,16 +248,33 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-In the coding exercise ...
+- `dotnet tool install` Installs the specified .NET tool on your machine.
+- `dotnet ef migrations add InitialCreate` creates a directory called `Migrations` in the root of your project, and generate some migration files.
+- `dotnet ef database update` Updates the database to the last migration or to a specified migration.
+
+In the coding exercise you will use Entity Framework.
 
 ## Main Points
-- 
+- `dotnet add package` Adds or updates a package reference in a project file.
+- `dotnet tool install` Installs the specified .NET tool on your machine.
+- `dotnet ef migrations add InitialCreate` creates a directory called `Migrations` in the root of your project, and generate some migration files.
+- `dotnet ef database update` Updates the database to the last migration or to a specified migration.
 
 ## Suggested Coding Exercise
-- 
+- Cut over to use SQLite to store people.
 
 ## Building toward CSTA Standards:
-- 
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17)
+- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18)
+- Compare and contrast fundamental data structures and their uses (3B-AP-12)
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects (3B-AP-14)
+- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16)
+- Develop and use a series of test cases to verify that a program performs according to its design specifications (3B-AP-21)
+- Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality) (3B-AP-22)
+
 
 ## Resources
-- 
+- https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-package
+- https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install
+- https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli#create-your-first-migration
+- https://learn.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-database-update
