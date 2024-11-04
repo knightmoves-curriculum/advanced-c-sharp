@@ -9,10 +9,9 @@ namespace MyFirstApi.Controllers
     {
         private IWriteRepository<int, WeatherForecast> repository;
 
-        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> weatherForecastRepository)
+        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository)
         {
-            Console.WriteLine("contructing WeatherForecastController...");
-            repository = weatherForecastRepository;
+            this.repository = repository;
         }
 
         [HttpPost]
