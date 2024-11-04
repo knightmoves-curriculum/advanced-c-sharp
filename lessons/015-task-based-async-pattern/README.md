@@ -1,4 +1,4 @@
-In today's lesson we'll look at how one API can call another API.  In order to achieve this we will need to use the Task-based Asynchronous Pattern which is also know as TAP.  This pattern is used in .NET to handle blocking opperations through asynchronous calls by using Task objects which improving application responsiveness.  Without TAP, 3rd party API call that take a long time to respond will block our code.  Instead of blocking our code TAP allows our API to request a 3rd party API asyncronously, allowing it to respond when it is ready without blocking our code.  
+In today's lesson we'll look at how one API can call another API.  In order to achieve this we will need to use the Task-based Asynchronous Pattern which is also know as TAP.  This pattern is used in .NET to handle blocking opperations through asynchronous calls by using Task objects which improve application responsiveness.  Without TAP, 3rd party API call that take a long time to respond will block our code.  Instead of blocking our code TAP allows our API to request a 3rd party API asyncronously, allowing it to respond when it is ready without blocking our code.  
 
 
 ``` cs
@@ -136,6 +136,7 @@ public class WeatherForecast
     public WeatherForecast(DateTime date, double temperature, string? summary)
     {
         Date = DateOnly.FromDateTime(date);
+        TemperatureF = (int) temperature;
         TemperatureC = (int)((temperature - 32) * 5.0 / 9.0); ;
         Summary = summary;
     }
