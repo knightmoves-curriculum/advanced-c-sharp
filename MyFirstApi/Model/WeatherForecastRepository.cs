@@ -2,46 +2,49 @@ namespace MyFirstApi.Models
 {
     public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
     {
-        private List<WeatherForecast> forecast;
+        private WeatherForecastDbContext context;
 
-        public WeatherForecastRepository()
+        public WeatherForecastRepository(WeatherForecastDbContext context)
         {
-            Console.WriteLine("contructing WeatherForecastRepository...");
-            forecast = new List<WeatherForecast>();
-        }
-
-        public int Count()
-        {
-            return forecast.Count;
-        }
-
-        public List<WeatherForecast> FindAll()
-        {
-            return forecast;
-        }
-
-        public WeatherForecast FindById(int id)
-        {
-            return forecast[id];
-        }
-
-        public WeatherForecast RemoveById(int id)
-        {
-            var weatherForecast = forecast[id];
-            forecast.Remove(weatherForecast);
-            return weatherForecast;
+            this.context = context;
         }
 
         public WeatherForecast Save(WeatherForecast weatherForecast)
         {
-            forecast.Add(weatherForecast);
+            context.WeatherForecasts.Add(weatherForecast);
+            context.SaveChanges();
             return weatherForecast;
         }
 
         public WeatherForecast Update(int id, WeatherForecast weatherForecast)
         {
-            forecast[id] = weatherForecast;
+            weatherForecast.Id = id;
+            context.WeatherForecasts.Update(weatherForecast);
+            context.SaveChanges();
             return weatherForecast;
+        }
+
+        public List<WeatherForecast> FindAll()
+        {
+            return context.WeatherForecasts.ToList();
+        }
+
+        public WeatherForecast FindById(int id)
+        {
+            return context.WeatherForecasts.Find(id);
+        }
+
+        public WeatherForecast RemoveById(int id)
+        {
+            var weatherForecast = context.WeatherForecasts.Find(id);
+            context.WeatherForecasts.Remove(weatherForecast);
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
+        public int Count()
+        {
+            return context.WeatherForecasts.Count();
         }
     }
 }

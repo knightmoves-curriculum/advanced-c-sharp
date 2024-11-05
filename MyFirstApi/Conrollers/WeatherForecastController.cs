@@ -11,7 +11,6 @@ namespace MyFirstApi.Controllers
 
         public WeatherForecastController(IReadRepository<int, WeatherForecast> weatherForecastRepository)
         {
-            Console.WriteLine("contructing WeatherForecastController...");
             repository = weatherForecastRepository;
         }
 
@@ -24,7 +23,7 @@ namespace MyFirstApi.Controllers
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            if (id > (repository.FindAll().Count - 1))
+            if (id > repository.FindAll().Count)
             {
                 return NotFound();
             }

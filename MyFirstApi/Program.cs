@@ -1,18 +1,29 @@
+using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<WeatherForecastRepository>();
-builder.Services.AddSingleton<IReadRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
-builder.Services.AddSingleton<IWriteRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
+builder.Services.AddScoped<WeatherForecastRepository>();
+builder.Services.AddScoped<IReadRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
+builder.Services.AddScoped<IWriteRepository<int, WeatherForecast>>(provider => provider.GetRequiredService<WeatherForecastRepository>());
 
 builder.Services.AddTransient<CurrentWeatherForecastService>();
 builder.Services.AddHttpClient<CurrentWeatherForecastService>();
 
+builder.Services.AddDbContext<WeatherForecastDbContext>(options =>
+    options.UseSqlite("Data Source=weatherForecast.db"));
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<WeatherForecastDbContext>();
+    db.Database.Migrate();
+}
+
 app.MapControllers();
 
 app.Run();
