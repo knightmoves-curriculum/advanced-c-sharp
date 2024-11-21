@@ -79,6 +79,8 @@ public class WeatherAlert
 ``` cs
 namespace MyFirstApi.Models
 {
+    using Microsoft.EntityFrameworkCore;
+
     public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
     {
         ...
@@ -97,7 +99,13 @@ namespace MyFirstApi.Models
             context.SaveChanges();
             return weatherForecast;
         }
-
+        ...
+        public List<WeatherForecast> FindAll()
+        {
+            return context.WeatherForecasts
+            .Include(f => f.Alert)
+            .ToList();
+        }
         ...
     }
 }
