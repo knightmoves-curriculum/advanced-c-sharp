@@ -87,15 +87,14 @@ namespace MyFirstApi.Models
 
         public WeatherForecast Save(WeatherForecast weatherForecast)
         {
-            context.WeatherForecasts.Add(weatherForecast);
-
             if(weatherForecast.Alert != null)
             {
                 var alert = weatherForecast.Alert;
                 alert.WeatherForecast = weatherForecast;
                 context.WeatherAlerts.Add(alert);
             }
-            
+            context.WeatherForecasts.Add(weatherForecast);
+
             context.SaveChanges();
             return weatherForecast;
         }
