@@ -37,7 +37,7 @@ namespace MyFirstApi.Controllers
 }
 ```
 
-While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use a plugin called Thunder Client.
+While web browsers are designed to send GET requests to web servers, out-of-the-box it is not well suited for sending POST requests.  Instead, let's use a plugin called Fetch Client.
 
 ```
 {
