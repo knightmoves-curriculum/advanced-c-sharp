@@ -54,11 +54,14 @@
 1. **Introduction to Entity Framework Core and SQLite Setup**
     - Setting up Entity Framework Core with SQLite as a lightweight local database.
 
-1. **Defining Models and Entity Relationships**
-    - Modeling data with entity relationships like one-to-many and many-to-many.
+1. **One-to-one Relationships**
+    - Modeling data with entity relationships
 
-1. **CRUD Operations with Entity Framework Core**
-    - Implementing Create, Read, Update, and Delete (CRUD) operations using EF Core.
+1. **One-to-many Relationships**
+    - Modeling data with entity relationships1.
+
+1. **Many-to-many Relationships**
+    - Modeling data with entity relationships
 
 1. **Handling Query Parameters in API Requests**
    - Implementing dynamic filtering or searching using query parameters.
