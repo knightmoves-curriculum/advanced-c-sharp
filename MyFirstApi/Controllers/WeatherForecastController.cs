@@ -14,7 +14,7 @@ namespace MyFirstApi.Controllers
             return forecast;
         }
 
-        [HttpGet("{{id}")]
+        [HttpGet("{id}")]
         public IEnumerable<WeatherForecast> FindById(int id)
         {
             var weatherForecast = forecast[id];
