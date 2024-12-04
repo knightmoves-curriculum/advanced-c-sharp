@@ -14,6 +14,13 @@ namespace MyFirstApi.Controllers
             return forecast;
         }
 
+        [HttpGet("{{id}")]
+        public IEnumerable<WeatherForecast> FindById(int id)
+        {
+            var weatherForecast = forecast[id];
+            return forecast;
+        }
+
         [HttpPost]
         public WeatherForecast Post([FromBody] WeatherForecast weatherForecast)
         {
