@@ -47,6 +47,15 @@ namespace MyFirstApi.Controllers
     }
 }
 ```
+http://localhost:5277/weatherforecast/0
+
+```
+{
+    "Date": "2024-11-11",
+    "TemperatureC": 20,
+    "Summary": "Updated Summary"
+}
+```
 
 In the coding exercise, you will create a PUT endpoint.
 
