@@ -27,5 +27,12 @@ namespace MyFirstApi.Controllers
             forecast.Add(weatherForecast);
             return weatherForecast;
         }
+
+        [HttpPut("{id}")]
+        public WeatherForecast Update([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
+        {
+            forecast[id] = weatherForecast;
+            return weatherForecast;
+        }
     }
 }
