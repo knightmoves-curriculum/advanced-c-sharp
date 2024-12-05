@@ -15,25 +15,6 @@ namespace MyFirstApi.Controllers
             return Ok(forecast);
         }
 
-        [HttpGet("boom")]
-        public IActionResult GetBoom()
-        {
-            try
-            {
-                throw new Exception("Boom!");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new
-                {
-                    Status = 500,
-                    Error = "Internal Server Error",
-                    Message = ex.Message,
-                    SupportContact = "support@knightmove.org"
-                });
-            }
-        }
-
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
