@@ -15,10 +15,14 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<WeatherForecast> FindById(int id)
+        public IActionResult FindById(int id)
         {
+            if(id > (forecast.Count - 1))
+            {
+                return NotFound();
+            }
             var weatherForecast = forecast[id];
-            return forecast;
+            return Ok(weatherForecast);
         }
 
         [HttpPost]
@@ -36,11 +40,15 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public WeatherForecast Delete(int id)
+        public IActionResult Delete(int id)
         {
+            if(id > (forecast.Count - 1))
+            {
+                return NotFound();
+            }
             var weatherForecast = forecast[id];
             forecast.Remove(weatherForecast);
-            return weatherForecast;
+            return Ok(weatherForecast);
         }
     }
 }
