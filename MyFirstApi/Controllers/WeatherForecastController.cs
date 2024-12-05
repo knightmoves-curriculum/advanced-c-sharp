@@ -34,5 +34,13 @@ namespace MyFirstApi.Controllers
             forecast[id] = weatherForecast;
             return weatherForecast;
         }
+
+        [HttpDelete("{id}")]
+        public WeatherForecast Delete(int id)
+        {
+            var weatherForecast = forecast[id];
+            forecast.Remove(weatherForecast);
+            return weatherForecast;
+        }
     }
 }
