@@ -9,9 +9,9 @@ namespace MyFirstApi.Controllers
         private static List<WeatherForecast> forecast = new List<WeatherForecast>();
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
-            return forecast;
+            return Ok(forecast);
         }
 
         [HttpGet("{id}")]
@@ -22,10 +22,10 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpPost]
-        public WeatherForecast Post([FromBody] WeatherForecast weatherForecast)
+        public IActionResult Post([FromBody] WeatherForecast weatherForecast)
         {
             forecast.Add(weatherForecast);
-            return weatherForecast;
+            return Created($"/weatherforecast/{forecast.Count - 1}", weatherForecast);
         }
 
         [HttpPut("{id}")]
