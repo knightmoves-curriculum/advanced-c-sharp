@@ -11,7 +11,6 @@ namespace MyFirstApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            
             return Ok(forecast);
         }
 
