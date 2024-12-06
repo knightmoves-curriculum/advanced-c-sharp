@@ -7,7 +7,12 @@ namespace MyFirstApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController: ControllerBase
     {
-        private static WeatherForecastRepository repository = new WeatherForecastRepository();
+        private IRepository<int, WeatherForecast> repository;
+
+        public WeatherForecastController(IRepository<int, WeatherForecast> repository)
+        {
+            this.repository = repository;
+        }
 
         [HttpGet]
         public IActionResult Get()

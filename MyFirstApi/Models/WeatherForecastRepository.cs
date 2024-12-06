@@ -1,6 +1,6 @@
 namespace MyFirstApi.Models
 {
-    public class WeatherForecastRepository
+    public class WeatherForecastRepository: IRepository<int, WeatherForecast>
     {
         private List<WeatherForecast> forecast;
 
