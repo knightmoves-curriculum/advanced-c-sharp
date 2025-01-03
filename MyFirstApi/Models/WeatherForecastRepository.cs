@@ -1,6 +1,6 @@
 namespace MyFirstApi.Models
 {
-    public class WeatherForecastRepository: IRepository<int, WeatherForecast>
+    public class WeatherForecastRepository: IReadRepository<int, WeatherForecast>, IWriteRepository<int, WeatherForecast>
     {
         private List<WeatherForecast> forecast;
 
@@ -37,6 +37,11 @@ namespace MyFirstApi.Models
             var weatherForecast = forecast[id];
             forecast.Remove(weatherForecast);
             return weatherForecast;
+        }
+
+        public int Count()
+        {
+            return forecast.Count();
         }
     }
 }

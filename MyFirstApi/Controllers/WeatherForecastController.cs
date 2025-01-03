@@ -7,9 +7,9 @@ namespace MyFirstApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController: ControllerBase
     {
-        private IRepository<int, WeatherForecast> repository;
+        private IReadRepository<int, WeatherForecast> repository;
 
-        public WeatherForecastController(IRepository<int, WeatherForecast> repository)
+        public WeatherForecastController(IReadRepository<int, WeatherForecast> repository)
         {
             Console.WriteLine("Construction WeatherForecastController...");
             this.repository = repository;
@@ -29,31 +29,6 @@ namespace MyFirstApi.Controllers
                 return NotFound();
             }
             var weatherForecast = repository.FindById(id);
-            return Ok(weatherForecast);
-        }
-
-        [HttpPost]
-        public IActionResult Post([FromBody] WeatherForecast weatherForecast)
-        {
-            repository.Save(weatherForecast);
-            return Created($"/weatherforecast/{repository.FindAll().Count - 1}", weatherForecast);
-        }
-
-        [HttpPut("{id}")]
-        public WeatherForecast Update([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
-        {
-            repository.Update(id, weatherForecast);
-            return weatherForecast;
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            if(id > (repository.FindAll().Count - 1))
-            {
-                return NotFound();
-            }
-            var weatherForecast = repository.RemoveById(id);
             return Ok(weatherForecast);
         }
     }
