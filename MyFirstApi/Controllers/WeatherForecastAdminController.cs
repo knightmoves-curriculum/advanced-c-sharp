@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
-using MyFirstApi.Services;
 
 namespace MyFirstApi.Controllers
 {
@@ -9,12 +8,10 @@ namespace MyFirstApi.Controllers
     public class WeatherForecastAdminController : ControllerBase
     {
         private IWriteRepository<int, WeatherForecast> repository;
-        private CurrentWeatherForecastService currentWeatherForecastService;
 
-        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository, CurrentWeatherForecastService currentWeatherForecastService)
+        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository)
         {
             this.repository = repository;
-            this.currentWeatherForecastService = currentWeatherForecastService;
         }
 
         [HttpPost]
@@ -43,12 +40,6 @@ namespace MyFirstApi.Controllers
                 return NotFound();
             }
             var weatherForecast = repository.RemoveById(id);
-            return Ok(weatherForecast);
-        }
-
-        [HttpPost("current")]
-        public async Task<IActionResult> Current(){
-            WeatherForecast weatherForecast = await currentWeatherForecastService.Report();
             return Ok(weatherForecast);
         }
     }

@@ -13,18 +13,12 @@ public class WeatherForecast
     [StringLength(20, MinimumLength = 3, ErrorMessage = "Summary must be between 3 and 20 characters.")]
     public string? Summary { get; init; }
 
-    public int TemperatureF { get; init; }
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-    public WeatherForecast(DateTime date, double temperature, string? summary)
+    public WeatherForecast(DateOnly date, int temperatureC, string? summary)
     {
-        Date = DateOnly.FromDateTime(date);
-        TemperatureF = (int) temperature;
-        TemperatureC = (int)((temperature - 32) * 5.0 / 9.0); ;
+        Date = date;
+        TemperatureC = temperatureC;
         Summary = summary;
-    }
-
-    public WeatherForecast()
-    {
-        
     }
 }
