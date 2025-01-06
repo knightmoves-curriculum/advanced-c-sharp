@@ -41,7 +41,7 @@ namespace MyFirstApi.Models
 
 ```
 
-`dotnet ef migrations add AddWeatherAlertTable`
+`dotnet ef migrations add AddWeatherCommentTable`
 
 `dotnet run`
 
