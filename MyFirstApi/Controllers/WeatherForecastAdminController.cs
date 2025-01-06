@@ -21,13 +21,13 @@ namespace MyFirstApi.Controllers
         public IActionResult Post([FromBody] WeatherForecast weatherForecast)
         {
             repository.Save(weatherForecast);
-            return Created($"/weatherforecast/{repository.Count() - 1}", weatherForecast);
+            return Created($"/weatherforecast/{repository.Count()}", weatherForecast);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] WeatherForecast weatherForecast, [FromRoute] int id)
         {
-            if (id > (repository.Count() - 1))
+            if (id > repository.Count())
             {
                 return NotFound();
             }
@@ -38,7 +38,7 @@ namespace MyFirstApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id > (repository.Count() - 1))
+            if (id > repository.Count())
             {
                 return NotFound();
             }
