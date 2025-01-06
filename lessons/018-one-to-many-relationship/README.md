@@ -18,7 +18,7 @@ public class WeatherForecast
     ...
 
     public WeatherAlert? Alert {get; set; }
-    public ICollection<WeatherComment> Comment { get; set; }
+    public ICollection<WeatherComment> Comments { get; set; }
 
     ...
 }
@@ -50,9 +50,11 @@ namespace MyFirstApi.Models
     "Date": "2024-11-24", 
     "TemperatureC": 60, 
     "Summary": "123",
-    "Comment": {
-        "CommentMessage": "Love this weather!"
-    }
+    "Comments": [
+        {
+            "CommentMessage": "Love this weather!"
+        }
+    ]
 }
 ```
 ***************
