@@ -73,7 +73,7 @@ public class WeatherAlert
 }
 ```
 
-- In ASP.NET, when a model is created from JSON, the JsonIgnore attribute prevents the corresponding property from being populated during deserialization, ensuring that data from the incoming JSON does not modify that property. Deserialization is the process of converting one set of values, in this case these values are formatted as JSON, into a corresponding object or data structure.
+- In ASP.NET, when a model is created from JSON, the JsonIgnore attribute prevents the corresponding property from being populated during deserialization, ensuring that data from the incoming JSON does not modify that property. Deserialization is the process of converting one set of values, in this case these values are formatted as JSON, into a corresponding object or data structure.  If this property were not ignored it would create an infinite loop during the deserialization process because a WeatherForecast has an Alert that has a WeatherForecast and so on.  The JsonIgnore attribute enables us to brake this loop and instead set the weather forecast within the repository.
 
 
 ``` cs
@@ -83,10 +83,16 @@ namespace MyFirstApi.Models
 
     public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
     {
-        ...
+        private WeatherForecastDbContext context;
+
+        public WeatherForecastRepository(WeatherForecastDbContext context)
+        {
+            this.context = context;
+        }
 
         public WeatherForecast Save(WeatherForecast weatherForecast)
         {
+
             if(weatherForecast.Alert != null)
             {
                 var alert = weatherForecast.Alert;
@@ -94,18 +100,43 @@ namespace MyFirstApi.Models
                 context.WeatherAlerts.Add(alert);
             }
             context.WeatherForecasts.Add(weatherForecast);
-
+            
             context.SaveChanges();
             return weatherForecast;
         }
-        ...
+
+        public WeatherForecast Update(int id, WeatherForecast weatherForecast)
+        {
+            weatherForecast.Id = id;
+            context.WeatherForecasts.Update(weatherForecast);
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
         public List<WeatherForecast> FindAll()
         {
             return context.WeatherForecasts
             .Include(f => f.Alert)
             .ToList();
         }
-        ...
+
+        public WeatherForecast FindById(int id)
+        {
+            return context.WeatherForecasts.Find(id);
+        }
+
+        public WeatherForecast RemoveById(int id)
+        {
+            var weatherForecast = context.WeatherForecasts.Find(id);
+            context.WeatherForecasts.Remove(weatherForecast);
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
+        public int Count()
+        {
+            return context.WeatherForecasts.Count();
+        }
     }
 }
 ```
