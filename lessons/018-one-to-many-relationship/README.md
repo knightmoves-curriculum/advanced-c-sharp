@@ -1,6 +1,8 @@
 In today's lesson we'll look at one-to-many relationships in Entity Framework.  A one-to-many relationship is when each entity instance from one table is associated with many entity instances in another table. This means that both tables share a unique link between their records, often through a primary key in one table that also acts as a foreign key in the related table. This type of relationship is used when you want to model exclusive relationships, such as a WeatherForecast having comments, where each Weatherforecast has one or more comments, and each Comment belongs to exactly one WeatherForecast.
 
 ``` cs
+using System.Text.Json.Serialization;
+
 public class WeatherComment
 {
     public int Id { get; set; }
@@ -8,6 +10,7 @@ public class WeatherComment
     
     public int WeatherForecastId { get; set; }
 
+    [JsonIgnore]
     public WeatherForecast? WeatherForecast { get; set; } = null!;
 }
 ```
@@ -41,43 +44,6 @@ namespace MyFirstApi.Models
 
 ```
 
-`dotnet ef migrations add AddWeatherCommentTable`
-
-`dotnet run`
-
-``` json
-{
-    "Date": "2024-11-24", 
-    "TemperatureC": 60, 
-    "Summary": "123",
-    "Comments": [
-        {
-            "CommentMessage": "Love this weather!"
-        }
-    ]
-}
-```
-***************
-It fails because the Alert needs a reference to the WeatherForecast
-
-``` cs
-using System.Text.Json.Serialization;
-
-public class WeatherAlert
-{
-    public int Id { get; set; }
-    public string AlertMessage { get; set; }
-    
-    public int WeatherForecastId { get; set; }
-
-    [JsonIgnore]
-    public WeatherForecast? WeatherForecast { get; set; } = null!;
-}
-```
-
-- In ASP.NET, when a model is created from JSON, the JsonIgnore attribute prevents the corresponding property from being populated during deserialization, ensuring that data from the incoming JSON does not modify that property. Deserialization is the process of converting one set of values, in this case these values are formatted as JSON, into a corresponding object or data structure.  If this property were not ignored it would create an infinite loop during the deserialization process because a WeatherForecast has an Alert that has a WeatherForecast and so on.  The JsonIgnore attribute enables us to brake this loop and instead set the weather forecast within the repository.
-
-
 ``` cs
 namespace MyFirstApi.Models
 {
@@ -96,6 +62,16 @@ namespace MyFirstApi.Models
                 alert.WeatherForecast = weatherForecast;
                 context.WeatherAlerts.Add(alert);
             }
+
+            if(weatherForecast.Comments != null)
+            {
+                foreach (var comment in weatherForecast.Comments)
+                {
+                    comment.WeatherForecast = weatherForecast;
+                    context.WeatherComments.Add(comment);
+                }
+            }
+
             context.WeatherForecasts.Add(weatherForecast);
             
             context.SaveChanges();
@@ -108,6 +84,7 @@ namespace MyFirstApi.Models
         {
             return context.WeatherForecasts
             .Include(f => f.Alert)
+            .Include(f => f.Comments)
             .ToList();
         }
 
@@ -116,6 +93,8 @@ namespace MyFirstApi.Models
 }
 ```
 
+`dotnet ef migrations add AddWeatherCommentTable`
+
 `dotnet run`
 
 ``` json
@@ -123,22 +102,21 @@ namespace MyFirstApi.Models
     "Date": "2024-11-24", 
     "TemperatureC": 60, 
     "Summary": "123",
-    "Alert": {
-        "AlertMessage": "High winds expected"
-    }
+    "Comments": [
+        {
+            "CommentMessage": "Love this weather!"
+        }
+    ]
 }
 ```
 
 In the coding exercise you will create a 1 to 1 relationship.
 
 ## Main Points
-- A one-to-one relationship is when each entity instance from one table is associated with only one entity instance in another table.
-- Both tables share a unique link between their records, often through a primary key in one table that also acts as a foreign key in the related table.
-- The JsonIgnore attribute prevents the corresponding property from being populated during deserialization.
-- Deserialization is the process of converting one set of values into a corresponding object or data structure.
+- A one-to-many relationship is when each entity instance from one table is associated with many entity instances in another table.
 
 ## Suggested Coding Exercise
-- Create a one-to-one relationship between a person and a passport.
+- Create a one-to-many relationship between a person and nicknames.
 
 ## Building toward CSTA Standards:
 - Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17) https://www.csteachers.org/page/standards
@@ -149,6 +127,4 @@ In the coding exercise you will create a 1 to 1 relationship.
 - Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality) (3B-AP-22) https://www.csteachers.org/page/standards
 
 ## Resources
-- https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-one
-- https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/ignore-properties
-- https://en.wikipedia.org/wiki/Serialization
+- https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many
