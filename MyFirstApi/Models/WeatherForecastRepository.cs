@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace MyFirstApi.Models
 {
     public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
@@ -11,7 +13,15 @@ namespace MyFirstApi.Models
 
         public WeatherForecast Save(WeatherForecast weatherForecast)
         {
+
+            if(weatherForecast.Alert != null)
+            {
+                var alert = weatherForecast.Alert;
+                alert.WeatherForecast = weatherForecast;
+                context.WeatherAlerts.Add(alert);
+            }
             context.WeatherForecasts.Add(weatherForecast);
+            
             context.SaveChanges();
             return weatherForecast;
         }
@@ -26,7 +36,9 @@ namespace MyFirstApi.Models
 
         public List<WeatherForecast> FindAll()
         {
-            return context.WeatherForecasts.ToList();
+            return context.WeatherForecasts
+            .Include(f => f.Alert)
+            .ToList();
         }
 
         public WeatherForecast FindById(int id)

@@ -18,6 +18,8 @@ public class WeatherForecast
 
     public int TemperatureF { get; set; }
 
+    public WeatherAlert? Alert {get; set; }
+
     public WeatherForecast(DateTime date, double temperature, string? summary)
     {
         Date = DateOnly.FromDateTime(date);
