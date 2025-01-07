@@ -58,7 +58,10 @@
     - Modeling data with entity relationships
 
 1. **One-to-many Relationships**
-    - Modeling data with entity relationships1.
+    - Modeling data with entity relationships
+  
+1. **Using DTOs (Data Transfer Objects) in APIs**
+    - Separating internal models from external-facing DTOs for better API design.
 
 1. **Many-to-many Relationships**
     - Modeling data with entity relationships
@@ -95,9 +98,6 @@
 
 1. **Designing an API with a Service-Oriented Architecture (SOA)**
     - Exploring service-oriented design principles and how to apply them in API development.
-
-1. **Using DTOs (Data Transfer Objects) in APIs**
-    - Separating internal models from external-facing DTOs for better API design.
 
 1. **Mapping Entities to DTOs with AutoMapper**
     - Using AutoMapper to simplify mapping between domain models and DTOs.
