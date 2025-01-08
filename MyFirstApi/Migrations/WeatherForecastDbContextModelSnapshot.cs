@@ -68,8 +68,6 @@ namespace MyFirstApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TemperatureC")

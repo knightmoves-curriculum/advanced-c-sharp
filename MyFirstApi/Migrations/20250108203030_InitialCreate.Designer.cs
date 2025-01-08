@@ -11,8 +11,8 @@ using MyFirstApi.Models;
 namespace MyFirstApi.Migrations
 {
     [DbContext(typeof(WeatherForecastDbContext))]
-    [Migration("20250107004428_AddWeatherCommentTable")]
-    partial class AddWeatherCommentTable
+    [Migration("20250108203030_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,8 +71,6 @@ namespace MyFirstApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TemperatureC")

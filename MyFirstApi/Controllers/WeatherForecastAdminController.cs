@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
@@ -10,17 +11,21 @@ namespace MyFirstApi.Controllers
     {
         private IWriteRepository<int, WeatherForecast> repository;
         private CurrentWeatherForecastService currentWeatherForecastService;
+        private IMapper mapper;
 
-        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository, CurrentWeatherForecastService currentWeatherForecastService)
+        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository, 
+                                                CurrentWeatherForecastService currentWeatherForecastService,
+                                                IMapper mapper)
         {
             this.repository = repository;
             this.currentWeatherForecastService = currentWeatherForecastService;
+            this.mapper = mapper;
         }
 
         [HttpPost]
         public IActionResult Post([FromBody] WeatherForecastDto weatherForecastDto)
         {
-            WeatherForecast weatherForecast = Map(weatherForecastDto);
+            WeatherForecast weatherForecast = mapper.Map<WeatherForecast>(weatherForecastDto);
             repository.Save(weatherForecast);
             return Created($"/weatherforecast/{repository.Count()}", weatherForecast);
         }
@@ -28,7 +33,7 @@ namespace MyFirstApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] WeatherForecastDto weatherForecastDto, [FromRoute] int id)
         {
-            WeatherForecast weatherForecast = Map(weatherForecastDto);
+            WeatherForecast weatherForecast = mapper.Map<WeatherForecast>(weatherForecastDto);
             
             if (id > repository.Count())
             {
@@ -36,26 +41,6 @@ namespace MyFirstApi.Controllers
             }
             repository.Update(id, weatherForecast);
             return Ok(weatherForecast);
-        }
-
-        public WeatherForecast Map(WeatherForecastDto weatherForecastDto){
-            WeatherForecast weatherForecast = new(weatherForecastDto.Date, weatherForecastDto.TemperatureF, weatherForecastDto.Summary);
-
-            if(weatherForecastDto.Alert != null){
-                WeatherAlert weatherAlert = new();
-                weatherAlert.AlertMessage = weatherForecastDto.Alert;
-                weatherForecast.Alert = weatherAlert;
-            }
-            if(weatherForecastDto.Comments != null){
-                weatherForecast.Comments = [];
-                foreach(String comment in weatherForecastDto.Comments){
-                    WeatherComment weatherComment = new();
-                    weatherComment.CommentMessage = comment;
-                    weatherForecast.Comments.Add(weatherComment);
-                }
-            }
-
-            return weatherForecast;
         }
 
         [HttpDelete("{id}")]

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<WeatherForecastDbContext>(options =>
     options.UseSqlite("Data Source=weatherForecast.db"));
 
 builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(typeof(WeatherForecastProfile));
 
 var app = builder.Build();
 
