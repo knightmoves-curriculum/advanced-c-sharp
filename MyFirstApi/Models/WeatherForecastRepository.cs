@@ -20,6 +20,16 @@ namespace MyFirstApi.Models
                 alert.WeatherForecast = weatherForecast;
                 context.WeatherAlerts.Add(alert);
             }
+
+            if(weatherForecast.Comments != null)
+            {
+                foreach (var comment in weatherForecast.Comments)
+                {
+                    comment.WeatherForecast = weatherForecast;
+                    context.WeatherComments.Add(comment);
+                }
+            }
+
             context.WeatherForecasts.Add(weatherForecast);
             
             context.SaveChanges();
@@ -38,6 +48,7 @@ namespace MyFirstApi.Models
         {
             return context.WeatherForecasts
             .Include(f => f.Alert)
+            .Include(f => f.Comments)
             .ToList();
         }
 

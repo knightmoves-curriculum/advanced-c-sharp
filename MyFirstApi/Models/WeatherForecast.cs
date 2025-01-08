@@ -19,6 +19,7 @@ public class WeatherForecast
     public int TemperatureF { get; set; }
 
     public WeatherAlert? Alert {get; set; }
+    public ICollection<WeatherComment> Comments { get; set; }
 
     public WeatherForecast(DateTime date, double temperature, string? summary)
     {
