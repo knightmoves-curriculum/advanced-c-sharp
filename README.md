@@ -165,6 +165,7 @@
 
 1. **Test-Driven Development (TDD) Approach**
     - Applying TDD principles: write tests first, then implement the code to pass the tests.
+    - Refactor - Refactor /current to use AutoMapper and remove constructors
 
 1. **Writing Integration Tests**
     - Setting up and writing integration tests to test the entire API workflow.
