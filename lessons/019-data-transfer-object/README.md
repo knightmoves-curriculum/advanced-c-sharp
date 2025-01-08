@@ -1,4 +1,4 @@
-In today's lesson we'll learn about data transfer objects.  A Data Transfer Object (DTO) is a simple object that carries data between processes. DTOs are typically used to encapsulate data and send it from one subsystem of an application to another. DTOs are used to deserialize API payloads to ensure that the data structure matches the API contract, reducing coupling between different layers of an application and promoting cleaner code. By using DTOs, you can avoid directly exposing your domain entities, which helps maintain separation of concerns and simplifies validation and transformation of data.
+In today's lesson we'll learn about data transfer objects.  A Data Transfer Object (DTO) is a simple object that carries data between processes. DTOs are typically used to encapsulate data and send it from one subsystem to another. By using DTOs within your API, you can avoid directly exposing your Weather Forecast entity, which helps maintain separation of concerns and simplifies validation and transformation of data.
 
 ```cs
 using System.ComponentModel.DataAnnotations;
@@ -117,14 +117,19 @@ public class WeatherForecast
 In the coding exercise ...
 
 ## Main Points
-- 
+- A Data Transfer Object (DTO) is a simple object that carries data between processes.
+- By using DTOs within your API, you can avoid directly exposing your entities, which helps maintain separation of concerns, simplifies validation and transformation of data.
 
 ## Suggested Coding Exercise
-- 
+- Have students cut over to use a DTO
 
 ## Building toward CSTA Standards:
-- 
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17)
+- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18)
+- Evaluate the tradeoffs in how data elements are organized and where data is stored (3A-DA-10)
+- Compare and contrast fundamental data structures and their uses (3B-AP-12)
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects (3B-AP-14)
 
 ## Resources
-- 
+- https://en.wikipedia.org/wiki/Data_transfer_object
 
