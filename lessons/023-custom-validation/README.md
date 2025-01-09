@@ -57,4 +57,4 @@ In the coding exercise ...
 - 
 
 ## Resources
-- 
+- https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0#custom-attributes
