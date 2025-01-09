@@ -9,10 +9,9 @@ public class WeatherForecastDto
     [StringLength(20, MinimumLength = 3, ErrorMessage = "Summary must be between 3 and 20 characters.")]
     public string? Summary { get; set; }
 
-    [Required]
-    [Range(-130, 150, ErrorMessage = "Temperature must be between -130 and 150 degrees Fahrenheit.")]
     public int TemperatureF { get; set; }
 
     public String? Alert { get; set; }
     public ICollection<String>? Comments { get; set; }
+    public ICollection<int>? CityIds { get; set; }
 }

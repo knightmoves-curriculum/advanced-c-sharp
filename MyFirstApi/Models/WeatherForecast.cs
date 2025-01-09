@@ -15,6 +15,7 @@ public class WeatherForecast
 
     public WeatherAlert? Alert { get; set; }
     public ICollection<WeatherComment> Comments { get; set; }
+    public ICollection<CityWeatherForecast> CityWeatherForecasts { get; set; }
 
     public WeatherForecast(DateTime date, double temperature, string? summary) : this( DateOnly.FromDateTime(date), (int) temperature, summary)
     {

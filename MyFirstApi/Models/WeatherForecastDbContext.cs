@@ -9,5 +9,7 @@ namespace MyFirstApi.Models
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
         public DbSet<WeatherAlert> WeatherAlerts { get; set; }
         public DbSet<WeatherComment> WeatherComments { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<CityWeatherForecast> CityWeatherForecasts { get; set; }
     }
 }

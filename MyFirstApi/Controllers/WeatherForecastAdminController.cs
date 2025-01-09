@@ -11,13 +11,16 @@ namespace MyFirstApi.Controllers
     {
         private IWriteRepository<int, WeatherForecast> repository;
         private CurrentWeatherForecastService currentWeatherForecastService;
+        private CityForecastService cityForecastService;
         private IMapper mapper;
 
-        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository, 
+        public WeatherForecastAdminController(IWriteRepository<int, WeatherForecast> repository,
+                                                CityForecastService cityForecastService, 
                                                 CurrentWeatherForecastService currentWeatherForecastService,
                                                 IMapper mapper)
         {
             this.repository = repository;
+            this.cityForecastService = cityForecastService;
             this.currentWeatherForecastService = currentWeatherForecastService;
             this.mapper = mapper;
         }
@@ -27,6 +30,7 @@ namespace MyFirstApi.Controllers
         {
             WeatherForecast weatherForecast = mapper.Map<WeatherForecast>(weatherForecastDto);
             repository.Save(weatherForecast);
+            cityForecastService.Associate(weatherForecast, weatherForecastDto.CityIds);
             return Created($"/weatherforecast/{repository.Count()}", weatherForecast);
         }
 

@@ -15,5 +15,6 @@ public class WeatherForecastProfile : Profile
                        opt => opt.MapFrom(src => src.Comments != null 
                                                  ? src.Comments.Select(c => new WeatherComment { CommentMessage = c }).ToList() 
                                                  : new List<WeatherComment>()));
+        CreateMap<CityDto, City>();
     }
 }

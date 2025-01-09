@@ -49,6 +49,7 @@ namespace MyFirstApi.Models
             return context.WeatherForecasts
             .Include(f => f.Alert)
             .Include(f => f.Comments)
+            .Include(f => f.CityWeatherForecasts)
             .ToList();
         }
 
