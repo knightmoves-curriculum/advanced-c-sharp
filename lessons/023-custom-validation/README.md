@@ -1,4 +1,4 @@
-In today's lesson we'll ...
+In today's lesson we'll look at how to create custom validations.  Custom validation in ASP.NET can be achieved by creating a class that inherits from the ValidationAttribute class. By overriding the IsValid method, you can implement custom validation logic that check whether the data meets your criteria. This approach allows you to integrate complex validation logic into your data models, ensuring that user input is validated according to your business rules before being processed.
 
 ``` cs
 using System.ComponentModel.DataAnnotations;
