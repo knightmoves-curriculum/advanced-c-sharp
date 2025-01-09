@@ -45,16 +45,21 @@ public class WeatherForecastDto
 }
 ```
 
-In the coding exercise ...
+In the coding exercise you will create a custom validation.
 
 ## Main Points
-- 
+- Custom validation in ASP.NET can be achieved by creating a class that inherits from the ValidationAttribute class.
+- By overriding the IsValid method, you can implement custom validation logic that check whether the data meets your criteria.
 
 ## Suggested Coding Exercise
-- 
+- Add a custom validation.
 
 ## Building toward CSTA Standards:
-- 
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17) https://www.csteachers.org/page/standards
+- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18) https://www.csteachers.org/page/standards
+- Evaluate and refine computational artifacts to make them more usable and accessible (3A-AP-21) https://www.csteachers.org/page/standards
+- Systematically design and develop programs for broad audiences by incorporating feedback from users (3A-AP-19) https://www.csteachers.org/page/standards
+- Develop and use a series of test cases to verify that a program performs according to its design specifications (3B-AP-21) https://www.csteachers.org/page/standards
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0#custom-attributes
