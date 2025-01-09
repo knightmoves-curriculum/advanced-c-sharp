@@ -292,7 +292,7 @@ public class WeatherForecastDto
 
     public String? Alert { get; set; }
     public ICollection<String>? Comments { get; set; }
-    public ICollection<int>? Cities { get; set; }
+    public ICollection<int>? CityIds { get; set; }
 }
 
 ```
@@ -444,6 +444,34 @@ dotnet ef migrations add AddCityWeatherForecastTables
 
 ```
 dotnet run
+```
+
+```json
+POST http://localhost:5227/admin/city
+{
+    "Name": "Chicago"
+}
+
+POST http://localhost:5227/admin/city
+{
+    "Name": "New York"
+}
+```
+
+```json
+POST http://localhost:5227/admin/weatherforecast
+
+{
+    "Date": "2024-11-24",
+    "TemperatureF": 60,
+    "Summary": "Pretty Nice",
+    "Alert": "Thunderstorm Warning",
+    "Comments": [
+        "Loving the weather",
+        "I wish it were warmer :)"
+    ],
+    "CityIds": [1,2]
+}
 ```
 
 In the coding exercise ...
