@@ -438,6 +438,10 @@ app.Run();
 
 ```
 
+```cs
+dotnet ef migrations add AddCityWeatherForecastTables
+```
+
 In the coding exercise ...
 
 ## Main Points
