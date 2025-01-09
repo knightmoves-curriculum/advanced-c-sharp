@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class ConsistentTemperatureSummaryAttribute : ValidationAttribute
 {
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         if (value is not WeatherForecastDto forecast)
         {
