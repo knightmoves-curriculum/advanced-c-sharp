@@ -20,11 +20,11 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery] DateOnly date)
+        public IActionResult Get([FromQuery] DateOnly? date)
         {
             if(date != null)
             {
-                return Ok(forecastByDateRepository.FindByDate(date));
+                return Ok(forecastByDateRepository.FindByDate((DateOnly)date));
             } else {
                 return Ok(repository.FindAll()); 
             }
@@ -182,6 +182,11 @@ app.MapControllers();
 app.Run();
 
 ```
+
+```
+GET http://localhost:5227/weatherforecast?date=2024-12-24
+```
+
 In the coding exercise you will use a query parameter.
 
 ## Main Points
