@@ -393,6 +393,73 @@ namespace MyFirstApi.Models
 ```
 
 ```cs
+namespace MyFirstApi.Models
+{
+    using Microsoft.EntityFrameworkCore;
+
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
+    {
+        private WeatherForecastDbContext context;
+
+        public WeatherForecastRepository(WeatherForecastDbContext context)
+        {
+            this.context = context;
+        }
+
+        public WeatherForecast Save(WeatherForecast weatherForecast)
+        {
+
+            if(weatherForecast.Alert != null)
+            {
+                var alert = weatherForecast.Alert;
+                alert.WeatherForecast = weatherForecast;
+                context.WeatherAlerts.Add(alert);
+            }
+            context.WeatherForecasts.Add(weatherForecast);
+            
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
+        public WeatherForecast Update(int id, WeatherForecast weatherForecast)
+        {
+            weatherForecast.Id = id;
+            context.WeatherForecasts.Update(weatherForecast);
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
+        public List<WeatherForecast> FindAll()
+        {
+            return context.WeatherForecasts
+            .Include(f => f.Alert)
+            .Include(f => f.Comments)
+            .Include(f => f.CityWeatherForecasts)
+            .ToList();
+        }
+
+        public WeatherForecast FindById(int id)
+        {
+            return context.WeatherForecasts.Find(id);
+        }
+
+        public WeatherForecast RemoveById(int id)
+        {
+            var weatherForecast = context.WeatherForecasts.Find(id);
+            context.WeatherForecasts.Remove(weatherForecast);
+            context.SaveChanges();
+            return weatherForecast;
+        }
+
+        public int Count()
+        {
+            return context.WeatherForecasts.Count();
+        }
+    }
+}
+```
+
+```cs
 using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
@@ -474,13 +541,14 @@ POST http://localhost:5227/admin/weatherforecast
 }
 ```
 
-In the coding exercise ...
+In the coding exercise you will create a many to many relationship.
 
 ## Main Points
-- 
+- A many-to-many relationship is when many entity instances from one table are associated with many entity instances in another table.
+- This means that both tables are linked through a thrid table that holds a foreign key relationship with both of the related tables.
 
 ## Suggested Coding Exercise
-- 
+- You could associate people with each other as parents and children.
 
 ## Building toward CSTA Standards:
 - 
