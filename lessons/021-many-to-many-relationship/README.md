@@ -1,4 +1,4 @@
-In today's lesson we'll look at many-to-many relationships in Entity Framework.  A many-to-many relationship is when many entity instances from one table are associated with many entity instances in another table. This means that both tables are linked through a thrid table that holds a foreign key relationship with both of the related tables. An example of a many-to-many relationship is a City having many WeatherForecasts and a WeatherForecast relating to multiple Cities.
+In today's lesson we'll look at many-to-many relationships in Entity Framework.  A many-to-many relationship is when many entity instances from one table are associated with many entity instances in another table. Often in practice this means that both tables are linked through a thrid table that holds a foreign key relationship with both of the related tables. An example of a many-to-many relationship is a City having many WeatherForecasts and a WeatherForecast relating to multiple Cities.
 
 ```cs
 public class City
