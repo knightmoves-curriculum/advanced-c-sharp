@@ -551,7 +551,12 @@ In the coding exercise you will create a many to many relationship.
 - You could associate people with each other as parents and children.
 
 ## Building toward CSTA Standards:
-- 
+- Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects (3A-AP-17) https://www.csteachers.org/page/standards
+- Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs (3A-AP-18) https://www.csteachers.org/page/standards
+- Compare and contrast fundamental data structures and their uses (3B-AP-12) https://www.csteachers.org/page/standards
+- Construct solutions to problems using student-created components, such as procedures, modules and/or objects (3B-AP-14) https://www.csteachers.org/page/standards
+- Demonstrate code reuse by creating programming solutions using libraries and APIs (3B-AP-16) https://www.csteachers.org/page/standards
+- Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality) (3B-AP-22) https://www.csteachers.org/page/standards
 
 ## Resources
-- 
+- https://learn.microsoft.com/en-us/ef/core/modeling/relationships/many-to-many
