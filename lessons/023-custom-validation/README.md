@@ -44,12 +44,14 @@ public class WeatherForecastDto
     public ICollection<int>? CityIds { get; set; }
 }
 ```
+In C#, when you create a custom attribute, by convention you can drop the "Attribute" suffix when applying it because the framework automatically recognizes the class by its shorter name.
 
 In the coding exercise you will create a custom validation.
 
 ## Main Points
 - Custom validation in ASP.NET can be achieved by creating a class that inherits from the ValidationAttribute class.
 - By overriding the IsValid method, you can implement custom validation logic that check whether the data meets your criteria.
+- In C#, when you create a custom attribute, by convention you can drop the "Attribute" suffix when applying it because the framework automatically recognizes the class by its shorter name.
 
 ## Suggested Coding Exercise
 - Add a custom validation.
@@ -63,3 +65,4 @@ In the coding exercise you will create a custom validation.
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0#custom-attributes
+- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/is
