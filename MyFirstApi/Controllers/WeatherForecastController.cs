@@ -8,16 +8,23 @@ namespace MyFirstApi.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private IReadRepository<int, WeatherForecast> repository;
+        private IDateQueryable<WeatherForecast> forecastByDateRepository;
 
-        public WeatherForecastController(IReadRepository<int, WeatherForecast> repository)
+        public WeatherForecastController(IReadRepository<int, WeatherForecast> repository, IDateQueryable<WeatherForecast> forecastByDateRepository)
         {
             this.repository = repository;
+            this.forecastByDateRepository = forecastByDateRepository;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] DateOnly? date)
         {
-            return Ok(repository.FindAll());
+            if(date != null)
+            {
+                return Ok(forecastByDateRepository.FindByDate((DateOnly)date));
+            } else {
+                return Ok(repository.FindAll()); 
+            }
         }
 
         [HttpGet("{id}")]

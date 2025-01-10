@@ -1,8 +1,11 @@
-using Microsoft.EntityFrameworkCore;
-
 namespace MyFirstApi.Models
 {
-    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IReadRepository<int, WeatherForecast>
+    using System;
+    using Microsoft.EntityFrameworkCore;
+
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, 
+                                                IReadRepository<int, WeatherForecast>,
+                                                IDateQueryable<WeatherForecast>
     {
         private WeatherForecastDbContext context;
 
@@ -20,16 +23,6 @@ namespace MyFirstApi.Models
                 alert.WeatherForecast = weatherForecast;
                 context.WeatherAlerts.Add(alert);
             }
-
-            if(weatherForecast.Comments != null)
-            {
-                foreach (var comment in weatherForecast.Comments)
-                {
-                    comment.WeatherForecast = weatherForecast;
-                    context.WeatherComments.Add(comment);
-                }
-            }
-
             context.WeatherForecasts.Add(weatherForecast);
             
             context.SaveChanges();
@@ -69,6 +62,16 @@ namespace MyFirstApi.Models
         public int Count()
         {
             return context.WeatherForecasts.Count();
+        }
+
+        public List<WeatherForecast> FindByDate(DateOnly date)
+        {
+            return context.WeatherForecasts
+            .Where(wf => wf.Date == date)
+            .Include(f => f.Alert)
+            .Include(f => f.Comments)
+            .Include(f => f.CityWeatherForecasts)
+            .ToList();
         }
     }
 }
