@@ -28,8 +28,6 @@
 1. **4XX Responses**
      - 400 Bad Request when model fails validation
 
-1. **5XX Responses**
-
 1. **Custom Responses**
 
 1. **Single Responsibility Principle (SRP)**
