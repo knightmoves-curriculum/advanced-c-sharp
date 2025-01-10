@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,13 @@ builder.Services.AddControllers(options =>
 
 builder.Services.AddAutoMapper(typeof(WeatherForecastProfile));
 
+builder.Configuration.AddJsonFile("secrets.json");
+        
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -40,6 +48,9 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<WeatherForecastDbContext>();
     db.Database.Migrate();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

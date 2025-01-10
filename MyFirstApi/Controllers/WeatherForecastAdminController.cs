@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
@@ -25,6 +26,7 @@ namespace MyFirstApi.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] WeatherForecastDto weatherForecastDto)
         {
