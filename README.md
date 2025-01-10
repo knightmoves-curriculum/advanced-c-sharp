@@ -80,9 +80,6 @@
 1. **Global Error Handling and Exception Filters**
     - Implementing centralized error handling and creating custom exception filters.
 
-1. **Handling ModelState and Validation Errors**
-    - Dealing with validation errors and returning meaningful error messages to the client.
-
 1. **Implementing Basic Authentication**
     - Securing endpoints using basic authentication.
     - Basic principles of securing an API, including authentication and authorization.
