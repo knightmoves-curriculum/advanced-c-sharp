@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+[ConsistentTemperatureSummary]
 public class WeatherForecastDto
 {
     [Required]
