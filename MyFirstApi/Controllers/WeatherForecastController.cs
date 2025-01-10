@@ -37,5 +37,11 @@ namespace MyFirstApi.Controllers
             var weatherForecast = repository.FindById(id);
             return Ok(weatherForecast);
         }
+
+        [HttpGet("boom")]
+        public IActionResult Boom()
+        {
+            throw new InvalidOperationException("boom!");
+        }
     }
 }

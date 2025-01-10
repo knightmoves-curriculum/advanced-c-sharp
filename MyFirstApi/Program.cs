@@ -26,7 +26,10 @@ builder.Services.AddTransient<CityForecastService>();
 builder.Services.AddDbContext<WeatherForecastDbContext>(options =>
     options.UseSqlite("Data Source=weatherForecast.db"));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<GlobalExceptionFilter>();
+});
 
 builder.Services.AddAutoMapper(typeof(WeatherForecastProfile));
 
