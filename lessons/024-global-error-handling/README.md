@@ -127,13 +127,18 @@ app.Run();
 In the coding exercise you will add global error handling.
 
 ## Main Points
-- 
+- we should always set up global error handling to catch all errors.
+- Without global error handling raw exceptions with their stack traces would be displayed to the client.
+- Allowing a stack trace to be shown to clients exposes sensitive information about the application's internal structure and potential vulnerabilities, which can be exploited by attackers.
 
 ## Suggested Coding Exercise
-- 
+- Set up global error handling
 
 ## Building toward CSTA Standards:
-- 
+- Develop guidelines that convey systematic troubleshooting strategies that others can use to identify and fix errors (3A-CS-03) https://www.csteachers.org/page/standards
+- Recommend security measures to address various scenarios based on factors such as efficiency, feasibility, and ethical impacts (3A-NI-06) https://www.csteachers.org/page/standards
+- Document design decisions using text, graphics, presentations, and/or demonstrations in the development of complex programs (3A-AP-23) https://www.csteachers.org/page/standards
+- Explain security issues that might lead to compromised computer programs (3B-AP-18) https://www.csteachers.org/page/standards
 
 ## Resources
-- 
+- https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-9.0#exception-filters
