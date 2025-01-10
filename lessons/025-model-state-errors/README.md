@@ -223,7 +223,12 @@ In the coding exercise ...
 - Use Basic Authentication to secure their API.
 
 ## Building toward CSTA Standards:
-- 
+- Give examples to illustrate how sensitive data can be affected by malware and other attacks (3A-NI-05) https://www.csteachers.org/page/standards
+- Recommend security measures to address various scenarios based on factors such as efficiency, feasibility, and ethical impacts (3A-NI-06) https://www.csteachers.org/page/standards
+- Compare various security measures, considering tradeoffs between the usability and security of a computing system (3A-NI-07) https://www.csteachers.org/page/standards
+- Explain tradeoffs when selecting and implementing cybersecurity recommendations (3A-NI-08) https://www.csteachers.org/page/standards
+- Compare ways software developers protect devices and information from unauthorized access (3B-NI-04) https://www.csteachers.org/page/standards
+- Explain security issues that might lead to compromised computer programs (3B-AP-18) https://www.csteachers.org/page/standards
 
 ## Resources
 - https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-9.0
