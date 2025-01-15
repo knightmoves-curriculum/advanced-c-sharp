@@ -9,7 +9,7 @@ In order to uninstall a dotnet package run dotnet `remove package` command.
 ```
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.0
 ```
-The --version option in the dotnet add package command specifies the exact version of the package to install. This allows you to control which version of a package is added to your project, ensuring compatibility or adherence to specific project requirements.
+The `--version` option in the dotnet add package command specifies the exact version of the package to install. This allows you to control which version of a package is added to your project, ensuring compatibility or adherence to specific project requirements.
 
 The correct version of an ASP.NET Core package should match the .NET version your project targets to ensure compatibility, stability, and access to the latest features. You can determine the correct version by checking your project's target framework in the .csproj file and selecting the corresponding package version from the NuGet page or official documentation.
 
