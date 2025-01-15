@@ -203,9 +203,10 @@ app.Run();
 In the coding exercise you will secure an API with JWT.
 
 ## Main Points
-- Securing APIs is essential to protect sensitive data, prevent unauthorized access and attacks, ensure system integrity, and maintain user trust while complying with data protection regulations.
-- Basic Authentication is a simple authentication mechanism where a user's credentials (username and password) are encoded using Base64 and sent in the HTTP request header.
-- Although easy to implement, Basic Authentication is not secure on its own and should be used over HTTPS to prevent credential exposure during transmission.
+- JWT (JSON Web Token) is a compact, URL-safe token used for securely transmitting information between parties as a JSON object.
+- JWT is valuable for securing APIs because they are stateless, allowing the server to verify user identity without storing session data, and can include custom claims for more granular access control.
+- In order to uninstall a dotnet package run dotnet `remove package` command.
+- The --version option in the `dotnet add package` command specifies the exact version of the package to install.
 
 ## Suggested Coding Exercise
 - Use Basic Authentication to secure their API.
