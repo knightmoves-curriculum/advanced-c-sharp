@@ -220,4 +220,4 @@ In the coding exercise you will secure an API with JWT.
 - Explain security issues that might lead to compromised computer programs (3B-AP-18) https://www.csteachers.org/page/standards
 
 ## Resources
-- https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-9.0
+- https://en.wikipedia.org/wiki/JSON_Web_Token
