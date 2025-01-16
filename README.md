@@ -85,9 +85,6 @@
 1. **Securing APIs with JWT (JSON Web Tokens)**
     - Implementing JWT authentication to secure API endpoints in a stateless manner.
 
-1. **Authorization with Policies and Claims**
-    - Using policies and claims to enforce complex authorization requirements.
-
 1. **Role-Based Authorization**
     - Restricting access to API endpoints based on user roles.
 
