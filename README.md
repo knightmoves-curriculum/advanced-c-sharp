@@ -88,7 +88,10 @@
 1. **Role-Based Authorization**
     - Restricting access to API endpoints based on user roles.
 
-1. **Handling Sensitive Data Securely**
+1. **One Way Hashing**
+    - Techniques for securely handling and storing sensitive information.
+  
+1. **Encryption**
     - Techniques for securely handling and storing sensitive information.
 
 1. **Designing an API with a Service-Oriented Architecture (SOA)**
