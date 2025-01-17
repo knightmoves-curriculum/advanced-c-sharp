@@ -240,7 +240,6 @@ using MyFirstApi.Models;
 using MyFirstApi.Services;
 using Microsoft.AspNetCore.Authentication;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<WeatherForecastRepository>();
