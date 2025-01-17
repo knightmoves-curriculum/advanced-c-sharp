@@ -94,6 +94,9 @@
 1. **Encryption**
     - Techniques for securely handling and storing sensitive information.
 
+1. **Improving Security with API Keys**
+    - Implementing API key-based authentication to secure access to API resources.
+
 1. **Designing an API with a Service-Oriented Architecture (SOA)**
     - Exploring service-oriented design principles and how to apply them in API development.
 
@@ -158,12 +161,25 @@
 1. **Testing Asynchronous Code**
     - Writing unit tests for asynchronous methods in controllers and services.
 
-1. **Test-Driven Development (TDD) Approach**
-    - Applying TDD principles: write tests first, then implement the code to pass the tests.
-    - Refactor - Refactor /current to use AutoMapper and remove constructors
+1. **Stubbing out 3rd Party Services for Testing**
+
+1. **Testing the Database**
 
 1. **Writing Integration Tests**
     - Setting up and writing integration tests to test the entire API workflow.
+
+1. **Test-Driven Development (TDD) Approach**
+    - Applying TDD principles: write tests first, then implement the code to pass the tests.
+    - Refactor - Refactor /current to use AutoMapper and remove constructors
+  
+1. **Refactor Duplicated Code**
+   - When the same code exists in multiple places, it increases the maintenance burden. If a change is needed, it must be made in all the duplicated locations, which can lead to errors and inconsistencies.
+     
+2. **Refactor Long Method**
+   - Methods or functions that are excessively long can be difficult to understand and maintain. They often try to do too much, making them harder to test and debug.
+
+3. **Refactor Large Class**
+   - A class that has too many responsibilities can become overly complex, violating the Single Responsibility Principle. This makes the class hard to understand, test, and modify.
 
 1. **Introduction to Middleware in ASP.NET Core**
     - Understanding the request pipeline and creating custom middleware for handling requests.
@@ -185,9 +201,6 @@
 
 1. **API Documentation with Swagger**
     - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
-
-1. **Improving Security with API Keys**
-    - Implementing API key-based authentication to secure access to API resources.
 
 1. **Advanced Error Handling Techniques**
     - Handling errors with more complex strategies, including retry mechanisms and fault tolerance.
