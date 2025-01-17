@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
 
@@ -16,6 +17,7 @@ namespace MyFirstApi.Controllers
             this.forecastByDateRepository = forecastByDateRepository;
         }
 
+        [Authorize(Policy = "UserOnly")]
         [HttpGet]
         public IActionResult Get([FromQuery] DateOnly? date)
         {

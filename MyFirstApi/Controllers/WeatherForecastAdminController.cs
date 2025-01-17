@@ -25,8 +25,8 @@ namespace MyFirstApi.Controllers
             this.currentWeatherForecastService = currentWeatherForecastService;
             this.mapper = mapper;
         }
-
-        [Authorize]
+        
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         public IActionResult Post([FromBody] WeatherForecastDto weatherForecastDto)
         {
