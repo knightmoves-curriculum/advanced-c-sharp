@@ -301,7 +301,9 @@ app.MapControllers();
 
 app.Run();
 ```
+`dotnet ef migrations add AddUserTable`
 
+`dotnet run`
 
 In the coding exercise you will create a one way hash.
 
