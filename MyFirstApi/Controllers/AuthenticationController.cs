@@ -9,15 +9,15 @@ using System.Text;
 [Route("[controller]")]
 public class AuthenticationController : ControllerBase
 {
-    private readonly string _issuer;
-    private readonly string _audience;
-    private readonly string _secret;
+    private readonly string issuer;
+    private readonly string audience;
+    private readonly string secret;
 
     public AuthenticationController(IConfiguration configuration)
     {
-        _issuer = configuration["Jwt:Issuer"];
-        _audience = configuration["Jwt:Audience"];
-        _secret = configuration["Jwt:Secret"];
+        issuer = configuration["Jwt:Issuer"];
+        audience = configuration["Jwt:Audience"];
+        secret = configuration["Jwt:Secret"];
     }
 
     [HttpPost("token")]
@@ -34,7 +34,7 @@ public class AuthenticationController : ControllerBase
 
     private string GenerateJwtToken(string role)
     {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         var claims = new[]
@@ -45,8 +45,8 @@ public class AuthenticationController : ControllerBase
         };
 
         var token = new JwtSecurityToken(
-            issuer: _issuer,
-            audience: _audience,
+            issuer: issuer,
+            audience: audience,
             claims: claims,
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: credentials);
