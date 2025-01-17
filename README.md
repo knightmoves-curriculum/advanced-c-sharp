@@ -97,9 +97,6 @@
 1. **Improving Security with API Keys**
     - Implementing API key-based authentication to secure access to API resources.
 
-1. **Designing an API with a Service-Oriented Architecture (SOA)**
-    - Exploring service-oriented design principles and how to apply them in API development.
-
 1. **Versioning an API**
     - Strategies for implementing version control in a REST API to support backward compatibility.
 
