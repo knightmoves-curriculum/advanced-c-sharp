@@ -143,6 +143,8 @@ public class ValueHasher
 }
 ```
 
+SHA-256 is a cryptographic hash function that produces a 256-bit (32-byte) fixed-length hash, commonly used for securely hashing data and verifying data integrity.
+
 ``` cs
 public class User
 {
@@ -309,6 +311,7 @@ In the coding exercise you will create a one way hash.
 ## Main Points
 - One-way hashing is a process where input data is transformed into a fixed-size string of characters, which cannot be reversed to reveal the original data.
 - This process is often used to securely transform passwords before they are stored in a database.
+- SHA-256 is a cryptographic hash function that produces a 256-bit (32-byte) fixed-length hash, commonly used for securely hashing data and verifying data integrity.
 
 ## Suggested Coding Exercise
 - Have students hash a value before they store it in the database.
