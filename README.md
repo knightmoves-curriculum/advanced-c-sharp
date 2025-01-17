@@ -178,6 +178,8 @@
 3. **Refactor Large Class**
    - A class that has too many responsibilities can become overly complex, violating the Single Responsibility Principle. This makes the class hard to understand, test, and modify.
 
+3. **Refactor Packaging Similar Classes for Readability**
+
 1. **Introduction to Middleware in ASP.NET Core**
     - Understanding the request pipeline and creating custom middleware for handling requests.
 
