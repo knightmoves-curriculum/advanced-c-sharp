@@ -18,6 +18,9 @@ builder.Services.AddScoped<CityWeatherForecastRepository>();
 builder.Services.AddScoped<IReadRepository<int, CityWeatherForecast>>(provider => provider.GetRequiredService<CityWeatherForecastRepository>());
 builder.Services.AddScoped<IWriteRepository<int, CityWeatherForecast>>(provider => provider.GetRequiredService<CityWeatherForecastRepository>());
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<ValueHasher>();
+
 builder.Services.AddTransient<CurrentWeatherForecastService>();
 builder.Services.AddHttpClient<CurrentWeatherForecastService>();
 
