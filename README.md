@@ -149,6 +149,30 @@
 1. **`IEnumerable` vs `IQueryable`: Differences and Use Cases**
    - Discuss the differences between `IEnumerable` and `IQueryable` and when to use each in C# for data querying.
 
+1. **Introduction to Middleware in ASP.NET Core**
+    - Understanding the request pipeline and creating custom middleware for handling requests.
+
+1. **Logging with ASP.NET Core**
+    - Implementing structured logging to capture important events and error information.
+
+1. **Improving API Performance with Caching**
+    - Using caching techniques to improve the performance of frequently accessed data.
+
+1. **Rate Limiting to Protect APIs from Overuse**
+    - Implementing rate limiting to control the number of requests made by clients.
+
+1. **Using the Repository Pattern**
+    - Abstracting database access using the Repository Pattern to decouple data logic from services.
+
+1. **Implementing WebSockets for Real-Time Communication**
+    - Using WebSockets to enable real-time data updates in your API.
+
+1. **API Documentation with Swagger**
+    - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
+
+1. **Advanced Error Handling Techniques**
+    - Handling errors with more complex strategies, including retry mechanisms and fault tolerance.
+
 1. **Introduction to Unit Testing with XUnit**
     - Overview of unit testing principles and setting up basic unit tests with XUnit.
 
@@ -180,27 +204,3 @@
    - Separate WeatherForecastDbContext to have fewer concerns
 
 3. **Refactor Packaging Similar Classes for Readability**
-
-1. **Introduction to Middleware in ASP.NET Core**
-    - Understanding the request pipeline and creating custom middleware for handling requests.
-
-1. **Logging with ASP.NET Core**
-    - Implementing structured logging to capture important events and error information.
-
-1. **Improving API Performance with Caching**
-    - Using caching techniques to improve the performance of frequently accessed data.
-
-1. **Rate Limiting to Protect APIs from Overuse**
-    - Implementing rate limiting to control the number of requests made by clients.
-
-1. **Using the Repository Pattern**
-    - Abstracting database access using the Repository Pattern to decouple data logic from services.
-
-1. **Implementing WebSockets for Real-Time Communication**
-    - Using WebSockets to enable real-time data updates in your API.
-
-1. **API Documentation with Swagger**
-    - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
-
-1. **Advanced Error Handling Techniques**
-    - Handling errors with more complex strategies, including retry mechanisms and fault tolerance.
