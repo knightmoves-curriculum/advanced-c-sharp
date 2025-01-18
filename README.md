@@ -100,6 +100,9 @@
 1. **Versioning an API**
     - Strategies for implementing version control in a REST API to support backward compatibility.
 
+1. **API Documentation with Swagger**
+    - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
+
 1. **Pagination and Sorting**
     - Implementing pagination and sorting mechanisms for handling large data sets.
 
@@ -166,9 +169,6 @@
 
 1. **Implementing WebSockets for Real-Time Communication**
     - Using WebSockets to enable real-time data updates in your API.
-
-1. **API Documentation with Swagger**
-    - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
 
 1. **Advanced Error Handling Techniques**
     - Handling errors with more complex strategies, including retry mechanisms and fault tolerance.
