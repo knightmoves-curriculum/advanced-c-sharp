@@ -108,6 +108,8 @@
 
 1. **Rate Limiting to Protect APIs from Overuse**
     - Implementing rate limiting to control the number of requests made by clients.
+    - Introduce Middleware 
+    - Understanding the request pipeline and creating custom middleware for handling requests.
 
 1. **Pagination and Sorting**
     - Implementing pagination and sorting mechanisms for handling large data sets.
@@ -157,9 +159,6 @@
 
 1. **`IEnumerable` vs `IQueryable`: Differences and Use Cases**
    - Discuss the differences between `IEnumerable` and `IQueryable` and when to use each in C# for data querying.
-
-1. **Introduction to Middleware in ASP.NET Core**
-    - Understanding the request pipeline and creating custom middleware for handling requests.
 
 1. **Logging with ASP.NET Core**
     - Implementing structured logging to capture important events and error information.
