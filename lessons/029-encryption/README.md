@@ -213,6 +213,9 @@ public class ValueEncryptor
 }
 ```
 
+
+The using statement ensures that objects implementing IDisposable are properly disposed of after use, managing resources efficiently and preventing leaks. In this code, it is used to automatically clean up Aes, MemoryStream, CryptoStream, and StreamWriter objects, which is crucial for releasing unmanaged resources during cryptographic operations.
+
 ``` cs
 using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
@@ -291,6 +294,7 @@ In the coding exercise you will use encryption.
 - Encryption is the process of converting data into a coded format to prevent unauthorized access.
 - Encryption at rest refers to protecting stored data by converting it into an unreadable format, which can only be decrypted with the correct key.
 - AES (Advanced Encryption Standard) is a widely-used encryption algorithm that provides robust security and is commonly employed for encrypting data both in transit and at rest in APIs.
+- The using statement ensures that objects implementing IDisposable are properly disposed of after use, managing resources efficiently and preventing leaks.
 
 
 ## Suggested Coding Exercise
