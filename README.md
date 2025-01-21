@@ -181,7 +181,7 @@
 1. **Stubbing out 3rd Party Services for Testing**
 
 1. **Testing the Database**
-  - explain Repository Pattern 
+    - explain Repository Pattern 
 
 1. **Writing Integration Tests**
     - Setting up and writing integration tests to test the entire API workflow.
