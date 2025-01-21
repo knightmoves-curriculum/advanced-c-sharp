@@ -16,11 +16,13 @@ public class AuthenticationController : ControllerBase
     private readonly string secret;
     private readonly IUserRepository userRepository;
     private readonly ValueHasher passwordHasher;
+    private readonly ValueEncryptor valueEncryptor;
     private readonly IMapper mapper;
 
     public AuthenticationController(IConfiguration configuration, 
                                     IUserRepository userRepository, 
                                     ValueHasher passwordHasher, 
+                                    ValueEncryptor valueEncryptor,
                                     IMapper mapper)
     {
         issuer = configuration["Jwt:Issuer"];
@@ -28,6 +30,7 @@ public class AuthenticationController : ControllerBase
         secret = configuration["Jwt:Secret"];
         this.userRepository = userRepository;
         this.passwordHasher = passwordHasher;
+        this.valueEncryptor = valueEncryptor;
         this.mapper = mapper;
     }
 
@@ -41,7 +44,14 @@ public class AuthenticationController : ControllerBase
         }
 
         var user = mapper.Map<User>(userDto);
-        user.HashedPassword = passwordHasher.HashPassword(userDto.Password);
+
+        string hashPassword = passwordHasher.HashPassword(userDto.Password);
+        Console.WriteLine("Hashed Password: " + hashPassword);
+        user.HashedPassword = hashPassword;
+
+        string encryptedSocialSecurityNumber = valueEncryptor.Encrypt(userDto.SocialSecurityNumber);
+        Console.WriteLine("Encrypted Social Security Number: " + encryptedSocialSecurityNumber);
+        user.EncryptedSocialSecurityNumber = encryptedSocialSecurityNumber;
 
         userRepository.Save(user);
         return Ok("User registered successfully.");
@@ -55,6 +65,9 @@ public class AuthenticationController : ControllerBase
         {
             return Unauthorized("Invalid username or password.");
         }
+
+        string socialSecurityNumber = valueEncryptor.Decrypt(user.EncryptedSocialSecurityNumber);
+        Console.WriteLine("Decrypted Social Security Number: " + socialSecurityNumber);
 
         string token = GenerateJwtToken(user);
         return Ok(new { token });

@@ -20,6 +20,7 @@ builder.Services.AddScoped<IWriteRepository<int, CityWeatherForecast>>(provider 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<ValueHasher>();
+builder.Services.AddSingleton<ValueEncryptor>();
 
 builder.Services.AddTransient<CurrentWeatherForecastService>();
 builder.Services.AddHttpClient<CurrentWeatherForecastService>();
