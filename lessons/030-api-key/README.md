@@ -52,7 +52,7 @@ public class ApiKeyMiddleware
 }
 ```
 
-Middleware in ASP.NET Core is software injected into the request pipeline to handle HTTP requests and responses, allowing for tasks such as authentication, logging, or response modification. It processes requests before they reach the endpoint and can also perform actions on the responses before they are sent back to the client. The request pipeline is a sequence of middleware components through which an HTTP request flows, each capable of handling and modifying the request and response.
+Middleware in ASP.NET Core is software injected into the request pipeline to handle HTTP requests and responses, allowing for tasks such as authentication, logging, or response modification. It processes requests before they reach the endpoint and can also perform actions on the responses before they are sent back to the client.
 
 ``` cs
 using Microsoft.EntityFrameworkCore;
@@ -130,7 +130,6 @@ In the coding exercise you will use encryption.
 ## Main Points
 - An API key is a unique identifier used to authenticate requests associated with a specific application or user, ensuring secure access to an API.
 - Middleware in ASP.NET Core is software injected into the request pipeline to handle HTTP requests and responses, allowing for tasks such as authentication, logging, or response modification.
-
 
 ## Suggested Coding Exercise
 - Have students add and api key to their API.
