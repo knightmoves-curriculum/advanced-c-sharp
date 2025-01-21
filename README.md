@@ -99,6 +99,7 @@
 
 1. **Versioning an API**
     - Strategies for implementing version control in a REST API to support backward compatibility.
+    - Introduce Middleware 
 
 1. **API Documentation with Swagger**
     - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
@@ -108,7 +109,6 @@
 
 1. **Rate Limiting to Protect APIs from Overuse**
     - Implementing rate limiting to control the number of requests made by clients.
-    - Introduce Middleware 
     - Understanding the request pipeline and creating custom middleware for handling requests.
 
 1. **Pagination and Sorting**
