@@ -1,4 +1,4 @@
-In today's lesson we'll look at API documentation.  One of the most popular API documentation frameworks is Swagger.  Swagger is an open-source framework for designing, building, and documenting APIs in a standardized way. It provides an interactive UI where developers can explore API endpoints, test requests, and view responses, all based on the API's specification. Swagger solves the problem of unclear or incomplete API documentation by generating consistent, machine-readable, and human-friendly API docs directly from code.
+In today's lesson we'll look at how to document your API.  One of the most popular API documentation frameworks is Swagger.  Swagger is an open-source framework for designing, building, and documenting APIs in a standardized way. It provides an interactive UI where developers can explore API endpoints, test requests, and view responses, all based on the API's specification. Swagger solves the problem of unclear or incomplete API documentation by generating consistent, machine-readable, and human-friendly API docs directly from code.
 
 `dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer`
 
