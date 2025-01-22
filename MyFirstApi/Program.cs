@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,13 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+});
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.ReportApiVersions = true;
 });
 
 var app = builder.Build();

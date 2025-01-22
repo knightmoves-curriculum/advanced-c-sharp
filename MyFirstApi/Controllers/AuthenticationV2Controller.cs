@@ -8,8 +8,9 @@ using System.Security.Claims;
 using System.Text;
 
 [ApiController]
-[Route("[controller]")]
-public class AuthenticationController : ControllerBase
+[ApiVersion("2.0")]
+[Route("v{version:apiVersion}/authentication")]
+public class AuthenticationV2Controller : ControllerBase
 {
     private readonly string issuer;
     private readonly string audience;
@@ -19,7 +20,7 @@ public class AuthenticationController : ControllerBase
     private readonly ValueEncryptor valueEncryptor;
     private readonly IMapper mapper;
 
-    public AuthenticationController(IConfiguration configuration, 
+    public AuthenticationV2Controller(IConfiguration configuration, 
                                     IUserRepository userRepository, 
                                     ValueHasher passwordHasher, 
                                     ValueEncryptor valueEncryptor,
@@ -35,7 +36,7 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UserDto userDto)
+    public async Task<IActionResult> Register([FromBody] UserDtoV2 userDto)
     {
         var existingUser = userRepository.FindByUsername(userDto.Username);
         if (existingUser != null)
@@ -49,7 +50,7 @@ public class AuthenticationController : ControllerBase
         Console.WriteLine("Hashed Password: " + hashPassword);
         user.HashedPassword = hashPassword;
 
-        string encryptedSocialSecurityNumber = valueEncryptor.Encrypt(userDto.SocialSecurityNumber);
+        string encryptedSocialSecurityNumber = valueEncryptor.Encrypt(ExtractSocialSecurityNumberString(userDto));
         Console.WriteLine("Encrypted Social Security Number: " + encryptedSocialSecurityNumber);
         user.EncryptedSocialSecurityNumber = encryptedSocialSecurityNumber;
 
@@ -57,8 +58,13 @@ public class AuthenticationController : ControllerBase
         return Ok("User registered successfully.");
     }
 
+    private  string ExtractSocialSecurityNumberString(UserDtoV2 userDto)
+    {
+        return userDto.SocialSecurityNumber.AreaNumber + "-" + userDto.SocialSecurityNumber.GroupNumber + "-" + userDto.SocialSecurityNumber.SerialNumber;
+    }
+
     [HttpPost("token")]
-    public IActionResult Token([FromBody] UserDto userDto)
+    public IActionResult Token([FromBody] UserDtoV2 userDto)
     {
         var user = userRepository.FindByUsername(userDto.Username);
         if (user == null || !passwordHasher.VerifyPassword(user.HashedPassword, userDto.Password))
