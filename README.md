@@ -104,6 +104,9 @@
 1. **API Documentation with Swagger**
     - Integrating Swagger for automatic API documentation and exploring advanced Swagger features.
 
+1. **Logging with ASP.NET Core**
+    - Implementing structured logging to capture important events and error information.
+
 1. **Improving API Performance with Caching**
     - Using caching techniques to improve the performance of frequently accessed data.
 
@@ -159,9 +162,6 @@
 
 1. **`IEnumerable` vs `IQueryable`: Differences and Use Cases**
    - Discuss the differences between `IEnumerable` and `IQueryable` and when to use each in C# for data querying.
-
-1. **Logging with ASP.NET Core**
-    - Implementing structured logging to capture important events and error information.
 
 1. **Implementing WebSockets for Real-Time Communication**
     - Using WebSockets to enable real-time data updates in your API.
