@@ -166,3 +166,4 @@ In the coding exercise you will set up Swagger documentation.
 
 ## Resources
 - https://swagger.io/
+- https://github.com/dotnet/aspnet-api-versioning/wiki/API-Documentation
