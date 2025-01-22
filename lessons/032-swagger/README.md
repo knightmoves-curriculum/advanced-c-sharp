@@ -28,7 +28,6 @@ builder.Services.AddScoped<IWriteRepository<int, CityWeatherForecast>>(provider 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<ValueHasher>();
 builder.Services.AddSingleton<ValueEncryptor>();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddTransient<CurrentWeatherForecastService>();
 builder.Services.AddHttpClient<CurrentWeatherForecastService>();
@@ -140,11 +139,12 @@ app.MapControllers();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.SwaggerEndpoint("/swagger/v2/swagger.json", "My API V2");
     c.RoutePrefix = "swagger";
 });
 
 app.Run();
-
 ```
 
 `dotnet run`
