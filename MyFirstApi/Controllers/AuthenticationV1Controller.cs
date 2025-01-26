@@ -19,12 +19,14 @@ public class AuthenticationV1Controller : ControllerBase
     private readonly ValueHasher passwordHasher;
     private readonly ValueEncryptor valueEncryptor;
     private readonly IMapper mapper;
+    private readonly ILogger<AuthenticationV2Controller> logger;
 
     public AuthenticationV1Controller(IConfiguration configuration, 
                                     IUserRepository userRepository, 
                                     ValueHasher passwordHasher, 
                                     ValueEncryptor valueEncryptor,
-                                    IMapper mapper)
+                                    IMapper mapper,
+                                    ILogger<AuthenticationV2Controller> logger)
     {
         issuer = configuration["Jwt:Issuer"];
         audience = configuration["Jwt:Audience"];
@@ -33,25 +35,31 @@ public class AuthenticationV1Controller : ControllerBase
         this.passwordHasher = passwordHasher;
         this.valueEncryptor = valueEncryptor;
         this.mapper = mapper;
+        this.logger = logger;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDtoV1 userDto)
     {
+        logger.LogDebug("Registering user: {Username}", userDto.Username);
+
         var existingUser = userRepository.FindByUsername(userDto.Username);
         if (existingUser != null)
         {
-            return BadRequest("Username is already taken.");
+            var message = "Username is already taken.";
+            logger.LogInformation(message + " For " + userDto.Username + ".");
+
+            return BadRequest(message);
         }
 
         var user = mapper.Map<User>(userDto);
 
         string hashPassword = passwordHasher.HashPassword(userDto.Password);
-        Console.WriteLine("Hashed Password: " + hashPassword);
+        logger.LogInformation("Hashed Password: " + hashPassword);
         user.HashedPassword = hashPassword;
 
         string encryptedSocialSecurityNumber = valueEncryptor.Encrypt(userDto.SocialSecurityNumber);
-        Console.WriteLine("Encrypted Social Security Number: " + encryptedSocialSecurityNumber);
+        logger.LogInformation("Encrypted Social Security Number: " + encryptedSocialSecurityNumber);
         user.EncryptedSocialSecurityNumber = encryptedSocialSecurityNumber;
 
         userRepository.Save(user);
@@ -61,14 +69,19 @@ public class AuthenticationV1Controller : ControllerBase
     [HttpPost("token")]
     public IActionResult Token([FromBody] UserDtoV1 userDto)
     {
+
+        logger.LogDebug("Generating a token for user: {Username}", userDto.Username);
+
         var user = userRepository.FindByUsername(userDto.Username);
         if (user == null || !passwordHasher.VerifyPassword(user.HashedPassword, userDto.Password))
         {
-            return Unauthorized("Invalid username or password.");
+            var message = "Invalid username or password.";
+            logger.LogInformation(message + " For " + userDto.Username + ".");
+            return Unauthorized(message);
         }
 
         string socialSecurityNumber = valueEncryptor.Decrypt(user.EncryptedSocialSecurityNumber);
-        Console.WriteLine("Decrypted Social Security Number: " + socialSecurityNumber);
+        logger.LogInformation("Decrypted Social Security Number: " + socialSecurityNumber);
 
         string token = GenerateJwtToken(user);
         return Ok(new { token });
@@ -76,6 +89,8 @@ public class AuthenticationV1Controller : ControllerBase
 
     private string GenerateJwtToken(User user)
     {
+        logger.LogTrace("Starting to generate JWT token for user: {Username}", user.Username);
+
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -93,6 +108,10 @@ public class AuthenticationV1Controller : ControllerBase
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: credentials);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        var tokenHandler = new JwtSecurityTokenHandler().WriteToken(token);
+
+        logger.LogTrace("Finished generating JWT token");
+
+        return tokenHandler;
     }
 }
