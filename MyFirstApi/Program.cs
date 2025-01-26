@@ -31,6 +31,9 @@ builder.Services.AddHttpClient<CurrentWeatherForecastService>();
 
 builder.Services.AddTransient<CityForecastService>();
 
+
+builder.Services.AddSingleton<RateLimitingService>();
+
 builder.Services.AddDbContext<WeatherForecastDbContext>(options =>
     options.UseSqlite("Data Source=weatherForecast.db"));
 
@@ -123,6 +126,8 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<WeatherForecastDbContext>();
     db.Database.Migrate();
 }
+
+app.UseMiddleware<RateLimitingMiddleware>();
 
 app.UseWhen(context => !context.Request.Path.StartsWithSegments("/swagger"), appBuilder =>
 {
