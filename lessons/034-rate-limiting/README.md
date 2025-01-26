@@ -1,4 +1,4 @@
-In today's lesson we'll look at rate limiting.  Rate limiting in an API is a technique used to control the number of requests a client can make to the server within a specific time period, ensuring fair usage and protecting against abuse like DDoS attacks. A DDoS (Distributed Denial of Service) attack is an attempt to overwhelm a server with an enormous number of requests from multiple sources, causing it to slow down or crash. Rate limiting helps maintain server performance, prevent resource overloading, and enforce usage policies for API consumers.
+In today's lesson we'll look at rate limiting.  Rate limiting an API is a technique used to control the number of requests a client can make to the server within a specific time period, ensuring fair usage and protecting against abuse like DDoS attacks. A DDoS (Distributed Denial of Service) attack is an attempt to overwhelm a server with an enormous number of requests from multiple sources, causing it to slow down or crash. Rate limiting helps maintain server performance, prevent resource overloading, and enforce usage policies for API consumers.
 
 ``` cs
 public class RateLimitingService
