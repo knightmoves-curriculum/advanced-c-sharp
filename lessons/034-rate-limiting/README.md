@@ -62,8 +62,6 @@ public class RateLimitingMiddleware
 }
 ```
 
-As we defined before, middleware in ASP.NET Core is software injected into the request pipeline to handle HTTP requests and responses, allowing for tasks such as authentication, logging, or response modification. The request pipeline is a sequence of middleware components that process incoming HTTP requests and outgoing responses, determining how the application handles and responds to each request.
-
 ``` cs
 using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
@@ -215,6 +213,8 @@ app.UseSwaggerUI(c =>
 
 app.Run();
 ```
+
+As we defined before, middleware in ASP.NET Core is software injected into the request pipeline to handle HTTP requests and responses, allowing for tasks such as authentication, logging, or response modification. The request pipeline is a sequence of middleware components that process incoming HTTP requests and outgoing responses, determining how the application handles and responds to each request.
 
 ``` cs
 using Microsoft.AspNetCore.Http;
