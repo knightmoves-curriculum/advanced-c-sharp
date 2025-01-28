@@ -36,7 +36,7 @@ namespace MyFirstApi.Models
     using Microsoft.EntityFrameworkCore;
     using MyFirstApi.Pagination;
 
-    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IPaginatedReadRepository<int, WeatherForecast>, IDateQueryable<WeatherForecast>
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IPaginatedReadRepository<int, WeatherForecast>
     {
         private WeatherForecastDbContext context;
 
@@ -207,7 +207,7 @@ namespace MyFirstApi.Controllers
                     PageNumber = pageNumber,
                     PageSize = pageSize,
                     TotalItems = paginatedResult.TotalCount,
-                    TotalPages = totalPages,
+                    TotalPages = paginatedResult.TotalPages,
                     NextPage = nextPageUrl
                 });
         }
