@@ -2,10 +2,9 @@ namespace MyFirstApi.Models
 {
     using System;
     using Microsoft.EntityFrameworkCore;
+    using MyFirstApi.Pagination;
 
-    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, 
-                                                IReadRepository<int, WeatherForecast>,
-                                                IDateQueryable<WeatherForecast>
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IPaginatedReadRepository<int, WeatherForecast>
     {
         private WeatherForecastDbContext context;
 
@@ -72,6 +71,59 @@ namespace MyFirstApi.Models
             .Include(f => f.Comments)
             .Include(f => f.CityWeatherForecasts)
             .ToList();
+        }
+
+        public PaginatedResult<WeatherForecast> FindPaginated(int pageNumber, int pageSize)
+        {
+            pageNumber = pageNumber < 1 ? 1 : pageNumber;
+            pageSize = pageSize < 1 ? 10 : pageSize;
+
+            var totalCount = context.WeatherForecasts.Count();
+            var items = context.WeatherForecasts
+                .Include(f => f.Alert)
+                .Include(f => f.Comments)
+                .Include(f => f.CityWeatherForecasts)
+                .OrderBy(f => f.Id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new PaginatedResult<WeatherForecast>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling((double)totalCount / pageSize),
+                HasNextPage = pageNumber * pageSize < totalCount
+            };
+        }
+
+        public PaginatedResult<WeatherForecast> FindPaginatedByDate(DateOnly date, int pageNumber, int pageSize)
+        {
+            pageNumber = pageNumber < 1 ? 1 : pageNumber;
+            pageSize = pageSize < 1 ? 10 : pageSize;
+
+            var totalCount = context.WeatherForecasts.Count();
+            var items = context.WeatherForecasts
+                .Where(wf => wf.Date == date)
+                .Include(f => f.Alert)
+                .Include(f => f.Comments)
+                .Include(f => f.CityWeatherForecasts)
+                .OrderBy(f => f.Id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new PaginatedResult<WeatherForecast>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling((double)totalCount / pageSize),
+                HasNextPage = pageNumber * pageSize < totalCount
+            };
         }
     }
 }
