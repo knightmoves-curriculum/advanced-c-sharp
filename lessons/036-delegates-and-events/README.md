@@ -293,7 +293,7 @@ app.Run();
 
 `dotnet run`
 
-The delegate model follows the observer design pattern, which enables a subscriber to register with and receive notifications from a provider.  The observer design pattern enables a subscriber to register with and receive notifications from a provider.
+It's important to note that this delegate model follows the observer design pattern, which enables a subscriber to register with and receive notifications from a provider.  The observer design pattern enables a subscriber to register with and receive notifications from a provider.
 
 In the coding exercise you will use delegates and events.
 
