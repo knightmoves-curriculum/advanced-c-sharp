@@ -107,9 +107,6 @@
 1. **Logging with ASP.NET Core**
     - Implementing structured logging to capture important events and error information.
 
-1. **Improving API Performance with Caching**
-    - Using caching techniques to improve the performance of frequently accessed data.
-
 1. **Rate Limiting to Protect APIs from Overuse**
     - Implementing rate limiting to control the number of requests made by clients.
     - Understanding the request pipeline and creating custom middleware for handling requests.
@@ -119,6 +116,9 @@
 
 1. **Understanding Delegates and Events**
     - Implementing delegates and events to decouple components in services.
+
+1. **Improving API Performance with Caching**
+    - Using caching techniques to improve the performance of frequently accessed data.
 
 1. **Parallel Programming with PLINQ**
    - Demonstrate how to execute LINQ queries in parallel using Parallel LINQ (PLINQ) for performance gains in CPU-bound tasks.
