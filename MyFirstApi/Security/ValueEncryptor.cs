@@ -1,9 +1,12 @@
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
 public class ValueEncryptor
 {
+    public delegate void DecryptionHandler(string cipherText, string plaintext);
+    public event DecryptionHandler? ValueDecrypted;
     private static string key;
     private static string iv;
 
@@ -69,6 +72,8 @@ public class ValueEncryptor
                 }
             }
         }
+
+        ValueDecrypted.Invoke(cipherText, plaintext);
 
         return plaintext;
     }

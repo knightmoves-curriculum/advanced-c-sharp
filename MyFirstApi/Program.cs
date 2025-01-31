@@ -35,6 +35,9 @@ builder.Services.AddTransient<CityForecastService>();
 
 builder.Services.AddSingleton<RateLimitingService>();
 
+builder.Services.AddSingleton<DecryptionAuditService>();
+builder.Services.AddSingleton<DecryptionLoggingService>();
+
 builder.Services.AddDbContext<WeatherForecastDbContext>(options =>
     options.UseSqlite("Data Source=weatherForecast.db"));
 
@@ -126,6 +129,13 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<WeatherForecastDbContext>();
     db.Database.Migrate();
+
+    var encryptor = scope.ServiceProvider.GetRequiredService<ValueEncryptor>();
+    var decryptionAuditService = scope.ServiceProvider.GetRequiredService<DecryptionAuditService>();
+    var decryptionLoggingService = scope.ServiceProvider.GetRequiredService<DecryptionLoggingService>();
+
+    encryptor.ValueDecrypted += decryptionAuditService.OnValueDecrypted;
+    encryptor.ValueDecrypted += decryptionLoggingService.OnValueDecrypted;
 }
 
 app.UseMiddleware<RateLimitingMiddleware>();
