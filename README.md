@@ -123,9 +123,6 @@
 1. **Parallel Programming with PLINQ**
    - Demonstrate how to execute LINQ queries in parallel using Parallel LINQ (PLINQ) for performance gains in CPU-bound tasks.
 
-1. **Anonymous Methods and Lambda Expressions**
-   - Introduce anonymous methods, and lambda expressions for creating reusable methods and passing behavior as a parameter.
-
 1. **Func, Action, and Predicate**
    - Learn how to use the `Func<T>`, `Action<T>`, and `Predicate<T>` delegate types to create reusable function pointers.
 
