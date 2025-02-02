@@ -37,7 +37,7 @@ namespace MyFirstApi.Services
 
             var periods = response?.Properties.Periods;
             var weatherForecasts = (from period in periods
-                        where period.Name == "Today"
+                        where period.Name == "This Afternoon"
                         select new WeatherForecast(period.StartTime, period.Temperature, period.ShortForecast))
                         .ToList();
             repository.Save(weatherForecasts[0]);
