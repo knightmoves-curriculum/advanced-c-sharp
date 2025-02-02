@@ -154,9 +154,6 @@
 1. **Exception Handling with `try`, `catch`, and `finally`**
    - Review the basic concepts of exception handling and how to properly use `try`, `catch`, and `finally` blocks.
 
-1. **Task and Task<T>**
-   - Explore the `Task` and `Task<T>` types and demonstrate how to use them for asynchronous operations in C#.
-
 1. **Creating and Using Attributes in C#**
    - Show how to define and use custom attributes to annotate and provide metadata for classes and methods.
 
