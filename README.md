@@ -126,9 +126,6 @@
 1. **Func, Action, and Predicate**
    - Learn how to use the `Func<T>`, `Action<T>`, and `Predicate<T>` delegate types to create reusable function pointers.
 
-1. **Anonymous Functions and Closures**
-   - Explore how to create anonymous functions and demonstrate closures, where variables from an outer scope can be accessed inside a lambda.
-
 1. **Nullable Types and the Nullable<T> Structure**
    - Explain the use of nullable value types (`int?`, `bool?`) and how the `Nullable<T>` struct works in C#.
    - Enforcing nullability rules to improve code safety and reduce null reference exceptions.
