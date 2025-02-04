@@ -145,7 +145,7 @@ namespace MyFirstApi.Models
 ```
 A lambda expression in C# is a concise way to define an anonymous function that can be used as a delegate which uses the syntax (parameters) => expression.
 
-An Action in C# is a delegate that takes one or more input parameters but does not return a value (i.e., it performs an action instead of producing a result).
+An Action in C# is a delegate that takes one or more input parameters but does not return a value.
 
 A Predicate in C# is a delegate that takes a single input parameter and returns a bool, typically used for filtering or condition checking.
 
@@ -156,7 +156,7 @@ In the coding exercise you will use Func, Action, and Predicate.
 ## Main Points
 - A Func in C# is a delegate that represents a method that takes one or more input parameters and returns a value.
 - A lambda expression in C# is a concise way to define an anonymous function that can be used as a delegate which uses the syntax (parameters) => expression.
-- An Action in C# is a delegate that takes one or more input parameters but does not return a value (i.e., it performs an action instead of producing a result).
+- An Action in C# is a delegate that takes one or more input parameters but does not return a value.
 - A Predicate in C# is a delegate that takes a single input parameter and returns a bool, typically used for filtering or condition checking.
 
 ## Suggested Coding Exercise
