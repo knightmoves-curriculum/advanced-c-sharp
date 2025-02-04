@@ -10,7 +10,7 @@ public class WeatherForecastDto
     [StringLength(20, MinimumLength = 3, ErrorMessage = "Summary must be between 3 and 20 characters.")]
     public string? Summary { get; set; }
 
-    public int TemperatureF { get; set; }
+    public int? TemperatureF { get; set; }
 
     public String? Alert { get; set; }
     public ICollection<String>? Comments { get; set; }
