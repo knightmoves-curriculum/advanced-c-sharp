@@ -36,10 +36,13 @@ namespace MyFirstApi.Services
             var response = await httpClient.GetFromJsonAsync<WeatherApiResponse>("https://api.weather.gov/gridpoints/DMX/73,49/forecast");
 
             var periods = response?.Properties.Periods;
-            var weatherForecasts = (from period in periods
-                        where period.Name == "This Afternoon"
-                        select new WeatherForecast(period.StartTime, period.Temperature, period.ShortForecast))
+                        
+            var weatherForecasts = periods
+                        .Where(p => p.Name == "Today")
+                        .AsParallel()
+                        .Select(p => new WeatherForecast(p.StartTime, p.Temperature, p.ShortForecast))
                         .ToList();
+
             repository.Save(weatherForecasts[0]);
 
             cache.Set(CacheKey, weatherForecasts[0], TimeSpan.FromSeconds(10));
