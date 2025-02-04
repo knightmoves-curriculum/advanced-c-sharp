@@ -130,8 +130,11 @@
    - Explain the use of nullable value types (`int?`, `bool?`) and how the `Nullable<T>` struct works in C#.
    - Enforcing nullability rules to improve code safety and reduce null reference exceptions.
 
-1. **Null-Coalescing and Null-Conditional Operators**
-   - Demonstrate how to handle `null` safely with operators like `??` (null-coalescing) and `?.` (null-conditional).
+1. **Null-Conditional Operators**
+   - Demonstrate how to handle `null` safely with operators like `?.` (null-conditional).
+
+1. **Null-Coalescing**
+   - Demonstrate how to handle `null` safely with operators like `??` (null-coalescing).
 
 1. **Interface Default Methods in C# 8**
    - Introduce default interface methods and demonstrate how to provide method implementations in interfaces.
