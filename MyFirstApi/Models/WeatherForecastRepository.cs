@@ -1,10 +1,11 @@
 namespace MyFirstApi.Models
 {
     using System;
+    using System.Reflection.Metadata.Ecma335;
     using Microsoft.EntityFrameworkCore;
     using MyFirstApi.Pagination;
 
-    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IPaginatedReadRepository<int, WeatherForecast>
+    public class WeatherForecastRepository : IWriteRepository<int, WeatherForecast>, IPaginatedReadRepository<int, WeatherForecast>, IDateQueryable<WeatherForecast>
     {
         private WeatherForecastDbContext context;
 
@@ -65,8 +66,14 @@ namespace MyFirstApi.Models
 
         public List<WeatherForecast> FindByDate(DateOnly date)
         {
+            Action<string> writeToConsole = message => Console.WriteLine(message);
+
+            writeToConsole("finding by date: " + date);
+
+            Predicate<WeatherForecast> dateEquals = wf => wf.Date == date;
+
             return context.WeatherForecasts
-            .Where(wf => wf.Date == date)
+            .Where(wf => dateEquals(wf))
             .Include(f => f.Alert)
             .Include(f => f.Comments)
             .Include(f => f.CityWeatherForecasts)
