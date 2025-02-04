@@ -1,4 +1,4 @@
-In today's lesson we'll look at Null Coalescing.  The null-coalescing operator (??) in C# provides a default value when the left-hand operand is null, returning the right-hand operand instead.
+In today's lesson we'll look at the Null Conditional Operator.  The null-conditional operator (?.) in C# allows safe access to members of an object without throwing a NullReferenceException, returning null if the left-hand operand is null.
 
 ``` cs
 
@@ -38,7 +38,7 @@ namespace MyFirstApi.Services
             logger.LogInformation("Calling https://api.weather.gov to retrieve forecast");
             var response = await httpClient.GetFromJsonAsync<WeatherApiResponse>("https://api.weather.gov/gridpoints/DMX/73,49/forecast");
 
-            var periods = response?.Properties?.Periods ?? new List<Period>();
+            var periods = response?.Properties?.Periods;
 
             var weatherForecastsFromDeclarativeLinq = (from period in periods
                         where period.Name == "This Afternoon"
@@ -83,16 +83,16 @@ public class Period
 
 `dotnet run`
 
-In the coding exercise you will use Null Coalescing.
+In the coding exercise you will use the Null Conditional Operator.
 
 ## Main Points
-- The null-coalescing operator (??) in C# provides a default value when the left-hand operand is null, returning the right-hand operand instead.
+- The null-conditional operator (?.) in C# allows safe access to members of an object without throwing a NullReferenceException, returning null if the left-hand operand is null.
 
 ## Suggested Coding Exercise
-- Have students use Null Coalescing.
+- Have students use the Null Conditional Operator.
 
 ## Building toward CSTA Standards:
 None
 
 ## Resources
-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
+- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-
