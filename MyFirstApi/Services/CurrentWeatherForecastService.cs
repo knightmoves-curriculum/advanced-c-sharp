@@ -35,7 +35,7 @@ namespace MyFirstApi.Services
             logger.LogInformation("Calling https://api.weather.gov to retrieve forecast");
             var response = await httpClient.GetFromJsonAsync<WeatherApiResponse>("https://api.weather.gov/gridpoints/DMX/73,49/forecast");
 
-            var periods = response?.Properties.Periods;
+            var periods = response?.Properties?.Periods ?? new List<Period>();
                         
             var weatherForecasts = periods
                         .Where(p => p.Name == "Today")
