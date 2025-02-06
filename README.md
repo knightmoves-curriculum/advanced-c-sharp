@@ -139,10 +139,8 @@
 1. **Interface Default Methods in C# 8**
    - Introduce default interface methods and demonstrate how to provide method implementations in interfaces.
 
-1. **Generics: Creating Generic Classes and Methods**
-   - Teach how to create generic classes and methods that can operate on any data type.
-
 1. **Generic Constraints**
+   - Teach how to create generic classes and methods that can operate on any data type.
    - Explain how to use constraints (`where T : class`, `where T : struct`) to limit the types that can be passed to a generic class or method.
 
 1. **Exception Handling with `try`, `catch`, and `finally`**
