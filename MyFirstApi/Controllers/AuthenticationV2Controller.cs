@@ -38,6 +38,7 @@ public class AuthenticationV2Controller : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDtoV2 userDto)
     {
+        userRepository.LogUserName(userDto.Username);
         var existingUser = userRepository.FindByUsername(userDto.Username);
         if (existingUser != null)
         {
