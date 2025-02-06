@@ -1,4 +1,4 @@
-In today's lesson we'll look at generic type constraints. A constraint on a C# generic restricts the types that can be used as arguments for a generic type parameter, ensuring they meet specific requirements such as implementing an interface, having a parameterless constructor, or being a reference/value type. Constraints are defined using the `where` keyword, like where T : interface.
+In today's lesson we'll look at generic type constraints. A constraint on a C# generic restricts the types that can be used as arguments for a generic type parameter, ensuring they meet specific requirements such as implementing an interface. Constraints are defined using the `where` keyword, like where T : interface.
 
 ``` cs
 using System.Numerics;
@@ -20,7 +20,7 @@ namespace MyFirstApi.Models
 In the coding exercise you will use a generic type constraint.
 
 ## Main Points
-- A constraint on a C# generic restricts the types that can be used as arguments for a generic type parameter, ensuring they meet specific requirements such as implementing an interface, having a parameterless constructor, or being a reference/value type. 
+- A constraint on a C# generic restricts the types that can be used as arguments for a generic type parameter, ensuring they meet specific requirements such as implementing an interface. 
 - Generic type constraints are defined using the `where` keyword, like where T : interface.
 
 ## Suggested Coding Exercise
