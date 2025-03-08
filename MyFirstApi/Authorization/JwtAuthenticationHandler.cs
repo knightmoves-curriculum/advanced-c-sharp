@@ -57,5 +57,9 @@ public class JwtAuthenticationHandler : AuthenticationHandler<AuthenticationSche
         {
             return AuthenticateResult.Fail("Invalid Authorization header");
         }
+        finally
+        {
+            base.Logger.LogInformation("Hit finally block");
+        }
     }
 }

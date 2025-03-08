@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
+using WeatherAPI.Attributes;
 
 namespace MyFirstApi.Controllers
 {
@@ -27,6 +28,7 @@ namespace MyFirstApi.Controllers
         }
         
         [Authorize(Policy = "AdminOnly")]
+        [ValidateTemperature(-30, 50)]
         [HttpPost]
         public IActionResult Post([FromBody] WeatherForecastDto weatherForecastDto)
         {
