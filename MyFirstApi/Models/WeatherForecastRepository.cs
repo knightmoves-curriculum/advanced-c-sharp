@@ -72,6 +72,10 @@ namespace MyFirstApi.Models
 
             Predicate<WeatherForecast> dateEquals = wf => wf.Date == date;
 
+            var weatherForecasts = context.WeatherForecasts
+            .AsEnumerable<WeatherForecast>()
+            .Where(wf => dateEquals(wf));
+            
             return context.WeatherForecasts
             .Where(wf => dateEquals(wf))
             .Include(f => f.Alert)
