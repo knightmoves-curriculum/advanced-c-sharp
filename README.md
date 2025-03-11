@@ -152,8 +152,7 @@
 1. **`IEnumerable` vs `IQueryable`: Differences and Use Cases**
    - Discuss the differences between `IEnumerable` and `IQueryable` and when to use each in C# for data querying.
 
-1. **Implementing WebSockets for Real-Time Communication**
-    - Using WebSockets to enable real-time data updates in your API.
+1. **API Gateway**
 
 1. **Advanced Error Handling Techniques**
     - Handling errors with more complex strategies, including retry mechanisms and fault tolerance.
