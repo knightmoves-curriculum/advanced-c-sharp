@@ -1,6 +1,8 @@
-In today's lesson we'll look at setting up and tearing down tests.  Unit tests often duplicate set up steps within each test method.  
-The best practice is to extract those common set up steps into a setup method.  Within XUnit this setup method is the constructor.  
-In some cases tests require tear down steps after each test.  Within XUnit this is accomplished by implementing the IDisposable interface and adding teardown steps to the Dispose method.
+In today's lesson we'll look at handling exceptions in tests.  XUnit test cases fail when the code they are testing throws an exception because, 
+by default, a test is expected to complete successfully without unexpected errors.
+The Assert.Throws method in XUnit is used to verify that a specific exception is thrown by a given piece of code, ensuring that expected failures 
+are correctly handled in tests. By using Assert.Throws, a test can pass if the expected exception occurs, allowing for controlled validation of 
+error-handling behavior.
 
 ``` cs
 using System.Security.Cryptography;
@@ -33,6 +35,21 @@ public class ValueHasherTest: IDisposable
     }
 
     [Fact]
+    public void ShouldThrowException_WhenGivenNullPassword()
+    {
+        try{
+            valueHasher.HashPassword(null);
+            Assert.Fail();
+        } 
+        catch (ArgumentNullException e)
+        {
+            Assert.NotNull(e);
+        }
+
+        Assert.Throws<ArgumentNullException>(() => {valueHasher.HashPassword(null)});
+    }
+
+    [Fact]
     public void ShouldHashPassword_WhenGivenValidPassword()
     {
         var hashedPassword = valueHasher.HashPassword(testPassword);
@@ -60,14 +77,14 @@ public class ValueHasherTest: IDisposable
 
 `dotnet test`
 
-In the coding exercise you will write a unit test.
+In the coding exercise you will use Assert.Throws<>.
 
 ## Main Points
-- Unit tests often duplicate set up steps within each test method.  
-- The best practice is to extract those common set up steps into a setup method. 
+- XUnit test cases fail when the code they are testing throws an exception because, by default, a test is expected to complete successfully without unexpected errors.
+- The Assert.Throws<> method in XUnit is used to verify that a specific exception is thrown by a given piece of code, ensuring that expected failures are correctly handled in tests.
 
 ## Suggested Coding Exercise
-- Have students refactor common set up steps into the constructor.
+- Have students test code that throws an error.
 
 ## Building toward CSTA Standards:
 - Develop and use a series of test cases to verify that a program performs according to its design specifications (3B-AP-21) https://www.csteachers.org/page/standards
@@ -76,3 +93,4 @@ In the coding exercise you will write a unit test.
 - https://en.wikipedia.org/wiki/Unit_testing
 - https://martinfowler.com/bliki/TestPyramid.html
 - https://xunit.net/
+
