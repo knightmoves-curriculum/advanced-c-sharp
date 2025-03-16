@@ -1,4 +1,4 @@
-In today's lesson we'll look at handling exceptions in tests.  XUnit test cases fail when the code they are testing throws an exception because, 
+In today's lesson we'll look at how to test exceptions.  XUnit test cases fail when the code they are testing throws an exception because, 
 by default, a test is expected to complete successfully without unexpected errors.
 The Assert.Throws method in XUnit is used to verify that a specific exception is thrown by a given piece of code, ensuring that expected failures 
 are correctly handled in tests. By using Assert.Throws, a test can pass if the expected exception occurs, allowing for controlled validation of 
