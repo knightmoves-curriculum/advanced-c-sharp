@@ -152,22 +152,16 @@
 1. **`IEnumerable` vs `IQueryable`: Differences and Use Cases**
    - Discuss the differences between `IEnumerable` and `IQueryable` and when to use each in C# for data querying.
 
-1. **Introduction to Unit Testing with XUnit**
-    - Overview of unit testing principles and setting up basic unit tests with XUnit.
-
-1. **Mocking Dependencies for Unit Tests**
-    - Using mocking frameworks like Moq to mock service dependencies in unit tests.
-
+1. **Unit Testing**
+1. **Setup & Teardown**
+1. **Testing Exceptions**
+1. **Test Stubs**
+1. **Test Mocks**
+1. **Testing Side Effects**
 1. **Testing Asynchronous Code**
-    - Writing unit tests for asynchronous methods in controllers and services.
-
 1. **Stubbing out 3rd Party Services for Testing**
-
 1. **Testing the Database**
-    - explain Repository Pattern 
-
 1. **Writing Integration Tests**
-    - Setting up and writing integration tests to test the entire API workflow.
 
 1. **Test-Driven Development (TDD) Approach**
     - Applying TDD principles: write tests first, then implement the code to pass the tests.
