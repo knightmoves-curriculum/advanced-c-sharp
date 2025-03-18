@@ -161,7 +161,7 @@
 1. **Testing Asynchronous Code**
 1. **Stubbing out 3rd Party Services for Testing**
 1. **Testing the Database & Code Coverage**
-1. **Refactor Packaging Similar Classes for Readability  & Test-Driven Development (TDD) Approach**
 1. **Writing Integration Tests**  
+1. **Refactor Packaging Similar Classes for Readability  & Test-Driven Development (TDD) Approach**
 1. **Refactor Duplicated Code**
 1. **Refactor Long Method**
