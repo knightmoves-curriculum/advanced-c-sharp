@@ -160,21 +160,8 @@
 1. **Testing Side Effects**
 1. **Testing Asynchronous Code**
 1. **Stubbing out 3rd Party Services for Testing**
-1. **Testing the Database**
-1. **Writing Integration Tests**
-
-1. **Test-Driven Development (TDD) Approach**
-    - Applying TDD principles: write tests first, then implement the code to pass the tests.
-    - Refactor - Refactor /current to use AutoMapper and remove constructors
-  
+1. **Testing the Database & Code Coverage**
+1. **Refactor Packaging Similar Classes for Readability  & Test-Driven Development (TDD) Approach**
+1. **Writing Integration Tests**  
 1. **Refactor Duplicated Code**
-   - When the same code exists in multiple places, it increases the maintenance burden. If a change is needed, it must be made in all the duplicated locations, which can lead to errors and inconsistencies.
-     
 1. **Refactor Long Method**
-   - Methods or functions that are excessively long can be difficult to understand and maintain. They often try to do too much, making them harder to test and debug.
-
-1. **Refactor Large Class**
-   - A class that has too many responsibilities can become overly complex, violating the Single Responsibility Principle. This makes the class hard to understand, test, and modify.
-   - Separate WeatherForecastDbContext to have fewer concerns
-
-1. **Refactor Packaging Similar Classes for Readability**
