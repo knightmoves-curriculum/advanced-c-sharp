@@ -1,95 +1,128 @@
-In today's lesson we'll look at how to test asynchronous methods.  XUnit supports testing asynchronous methods by allowing test methods to return Task or Task<T>, ensuring proper async execution and awaiting of results. The [Fact] attribute works seamlessly with async methods. Assertions and mocks can be used within the async test just like synchronous tests, verifying expected outcomes without blocking the test runner.
+In today's lesson we'll look at how to test asynchronous methods.  XUnit supports testing asynchronous methods by allowing test methods to return Task ensuring proper async execution and awaiting of results. The [Fact] attribute works seamlessly with async methods. Assertions and mocks can be used within the async test just like synchronous tests, verifying expected outcomes without blocking the test runner.
 
 
 ``` cs
+using Microsoft.AspNetCore.Http;
 using System.Net;
-using System.Text.Json;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Primitives;
-using Moq;
-using MyFirstApi.Models;
-using MyFirstApi.Services;
+using System.Text;
+using System.IO;
+using System.Threading.Tasks;
+using Xunit;
 
-public class CurrentWeatherForecastServiceTests
+public class RateLimitingMiddlewareTest
 {
+    private readonly StubLogger<RateLimitingMiddleware> _stubLogger;
+    private readonly DefaultHttpContext _expectedHttpContext;
+    private readonly StubRateLimitingService _underRateLimitService;
+    private readonly StubRateLimitingService _overRateLimitService;
+    private HttpContext? _actualContext = null;
+    private RequestDelegate _stubRequestDelegate;
+    
+    // This constructor will be called before each test
+    public RateLimitingMiddlewareTest()
+    {
+        _stubLogger = new StubLogger<RateLimitingMiddleware>();
+        _expectedHttpContext = new DefaultHttpContext();
+        _expectedHttpContext.Connection.RemoteIpAddress = IPAddress.Parse("127.0.0.1");
+        _expectedHttpContext.Response.Body = new MemoryStream();
+
+        _underRateLimitService = new StubRateLimitingService(true);
+        _overRateLimitService = new StubRateLimitingService(false);
+        
+        _stubRequestDelegate = async (HttpContext context) => _actualContext = context;
+    }
+
     [Fact]
-    public async Task ShouldReturnsWeatherForecast_WhenApiResponseIsValid()
+    public async Task ShouldCallNextMiddleware_WhenRateLimitNotExceeded()
     {
         // Arrange
-        var httpClient = new HttpClient(new StubHttpMessageHandler());
-        var repositoryMock = new Mock<IWriteRepository<int, WeatherForecast>>();
-        var cache = new StubMemoryCache();
-        var logger = new StubLogger<CurrentWeatherForecastService>();
+        var middleware = new RateLimitingMiddleware(_stubRequestDelegate, _underRateLimitService, _stubLogger);
 
-        var service = new CurrentWeatherForecastService(httpClient, repositoryMock.Object, cache, logger);
-        
         // Act
-        var result = await service.Report();
-        
+        await middleware.InvokeAsync(_expectedHttpContext);
+
         // Assert
-        Assert.NotNull(result);
-        Assert.Equal(75, result.TemperatureF);
-        Assert.Equal("Sunny", result.Summary);
+        _expectedHttpContext.Response.Body.Seek(0, SeekOrigin.Begin);
+        var responseBody = await new StreamReader(_expectedHttpContext.Response.Body, Encoding.UTF8).ReadToEndAsync();
+        Assert.Equal("", responseBody);
+
+        Assert.Same(_expectedHttpContext, _actualContext);
+
+        Assert.Equal(StatusCodes.Status200OK, _expectedHttpContext.Response.StatusCode);
+
+        Assert.Equal(2, _stubLogger.LoggedDebugMessages.Count);
+        Assert.Equal("Starting middleware", _stubLogger.LoggedDebugMessages[0]);
+        Assert.Equal("Calling next middleware", _stubLogger.LoggedDebugMessages[1]);
+    }
+
+    [Fact]
+    public async Task ShouldReturn429_WhenRateLimitExceeded()
+    {
+        // Arrange
+        var middleware = new RateLimitingMiddleware(_stubRequestDelegate, _overRateLimitService, _stubLogger);
+
+        // Act
+        await middleware.InvokeAsync(_expectedHttpContext);
+
+        // Assert
+        _expectedHttpContext.Response.Body.Seek(0, SeekOrigin.Begin);
+        var responseBody = await new StreamReader(_expectedHttpContext.Response.Body, Encoding.UTF8).ReadToEndAsync();
+        Assert.Equal("Rate limit exceeded. Try again later.", responseBody);
+
+        Assert.Null(_actualContext);
+
+        Assert.Equal(StatusCodes.Status429TooManyRequests, _expectedHttpContext.Response.StatusCode);
         
-        repositoryMock.Verify(r => r.Save(result));
-        Assert.Single(logger.LoggedInfoMessages);
-        Assert.Contains("Calling https://api.weather.gov to retrieve forecast", logger.LoggedInfoMessages[0]);
+        Assert.Single(_stubLogger.LoggedDebugMessages);
+        Assert.Equal("Starting middleware", _stubLogger.LoggedDebugMessages[0]);
     }
 }
 
-public class StubMemoryCache : IMemoryCache
+public class StubRateLimitingService : RateLimitingService
 {
-    private Dictionary<object, object> _cache = new();
-    public bool TryGetValue(object key, out object? value) => _cache.TryGetValue(key, out value);
-    public ICacheEntry CreateEntry(object key)
+    private readonly bool _isRequestAllowed;
+
+    public StubRateLimitingService(bool isRequestAllowed) 
+        : base(new DateTimeWrapper()) // Always passes a new DateTimeWrapper
     {
-        var entry = new StubCacheEntry(key, _cache);
-        _cache[key] = entry.Value;
-        return entry;
+        _isRequestAllowed = isRequestAllowed;
     }
-    public void Remove(object key) => _cache.Remove(key);
-    public void Dispose() { }
-}
 
-public class StubCacheEntry : ICacheEntry
-{
-    private object _key;
-    private Dictionary<object, object> _cache;
-    public object Key => _key;
-    public object? Value { get; set; }
-    public DateTimeOffset? AbsoluteExpiration { get; set; }
-    public TimeSpan? AbsoluteExpirationRelativeToNow { get; set; }
-    public TimeSpan? SlidingExpiration { get; set; }
-    public IList<IChangeToken> ExpirationTokens { get; } = new List<IChangeToken>();
-    public IList<PostEvictionCallbackRegistration> PostEvictionCallbacks { get; } = new List<PostEvictionCallbackRegistration>();
-    public CacheItemPriority Priority { get; set; }
-    public long? Size { get; set; }
-    public StubCacheEntry(object key, Dictionary<object, object> cache) { _key = key; _cache = cache; }
-    public void Dispose() => _cache.Remove(_key);
-}
-
-public class StubHttpMessageHandler : HttpMessageHandler
-{
-    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    public override bool IsRequestAllowed(string clientKey)
     {
-        var mockApiResponse = new WeatherApiResponse
-        {
-            Properties = new Properties
-            {
-                Periods = new List<Period>
-                {
-                    new Period { Name = "This Afternoon", StartTime = DateTime.UtcNow, Temperature = 75, ShortForecast = "Sunny" }
-                }
-            }
-        };
+        return _isRequestAllowed; // Always returns the predefined value
+    }
+}
+```
 
-        var response = new HttpResponseMessage(HttpStatusCode.OK)
+``` cs
+using Microsoft.Extensions.Logging;
+
+class StubLogger<T> : ILogger<T>
+{
+    public List<string> LoggedInfoMessages { get; } = new List<string>();
+    public List<string> LoggedDebugMessages { get; } = new List<string>();
+
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    {
+        if (logLevel == LogLevel.Information)
         {
-            Content = new StringContent(JsonSerializer.Serialize(mockApiResponse))
-        };
-        response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-        
-        return Task.FromResult(response);
+            LoggedInfoMessages.Add(formatter(state, exception));
+        }
+        if (logLevel == LogLevel.Debug)
+        {
+            LoggedDebugMessages.Add(formatter(state, exception));
+        }
+    }
+
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool IsEnabled(LogLevel logLevel)
+    {
+        throw new NotImplementedException();
     }
 }
 ```
@@ -99,7 +132,7 @@ public class StubHttpMessageHandler : HttpMessageHandler
 In the coding exercise you will test an asynchronous method.
 
 ## Main Points
-- XUnit supports testing asynchronous methods by allowing test methods to return Task or Task<T>, ensuring proper async execution and awaiting of results.
+- XUnit supports testing asynchronous methods by allowing test methods to return Task ensuring proper async execution and awaiting of results.
 
 ## Suggested Coding Exercise
 - Have students test an asynchronous method.
