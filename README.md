@@ -160,6 +160,7 @@
 1. **Testing Side Effects**
 1. **Testing Asynchronous Code**
 1. **Testing the Database & Code Coverage**
+1. **XUnit Async Setup**
 1. **Writing Integration Tests**  
 1. **Refactor Packaging Similar Classes for Readability  & Test-Driven Development (TDD) Approach**
 1. **Refactor Duplicated Code**
