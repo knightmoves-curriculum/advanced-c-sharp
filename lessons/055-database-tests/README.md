@@ -1,5 +1,8 @@
 In today's lesson we'll look at how to write database tests.  Up until now we have been focused on writing unit tests that test a method in complete isolation.  In order to write a database test a real db context has to be created instead of mocking out this dependency.  If you think about testing like a pyramid, the wide base is composed of unit tests and cover every part of the application.  As you move up beyond these foundational unit tests these tests begin to integrate multiple real dependencies together.  At the very top of the pyramid the entire application is loaded with 100% of the dependencies wired together.  As you move from the bottom of this testing pyramid to the top, the execution time of your tests typically gets slower and slower and the cost of writing and maintaining them typically gets more and more expensive.  In order to provide maximum coverage while maximizing the speed and cost of this suite of tests, it's a best practice to only write tens of full-stack integration tests at the top of the pyramid, hundreds of integration tests in the middle of the pyramid and thousands of unit tests at the bottom of the pyramid. For this lesson we write our first integration test in the middle of the testing pyramid. 
 
+1. `cd test/MyFirstApiTests`
+1. `dotnet add package Microsoft.EntityFrameworkCore.InMemory`
+1. `cd ../../`
 
 ``` cs
 using Microsoft.EntityFrameworkCore;
