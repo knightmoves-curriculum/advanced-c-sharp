@@ -1,6 +1,6 @@
 In today's lesson we'll look at how to write user acceptance tests. An automated user acceptance test (UAT) verifies that a system meets business requirements by testing real-world use cases. In the testing pyramid, UAT sits at the top, as it tests the entire application flow, including third-party services and databases, and is more expensive to maintain due to its comprehensive nature. Unlike mobile or web applications that we interact with as humans, REST APIs begin their user acceptance tests at the endpoint level because the "user", in this case, is another piece of software making API calls rather than a human.
 
-`run dotnet add package Microsoft.AspNetCore.Mvc.Testing`
+run `dotnet add package Microsoft.AspNetCore.Mvc.Testing`
 
 ``` cs
 using Microsoft.EntityFrameworkCore;
