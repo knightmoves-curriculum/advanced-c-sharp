@@ -6,7 +6,7 @@ run `dotnet add package coverlet.msbuild`
 
 run `cd ../../`
 
-run `dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov p:CoverletOutput=coverage.info`
+run `dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=coverage.info`
 
 run `reportgenerator -reports:test/MyFirstApiTests/coverage.info -targetdir:CoverageReport -reporttypes:Html`
 
